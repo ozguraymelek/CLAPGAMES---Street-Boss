@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StackManager : Singleton<StackManager>
@@ -359,6 +360,7 @@ public class StackManager : Singleton<StackManager>
         {
             EffectManager.Instance.PopEffect(_food.transform.position + new Vector3(0, 0, -1), Quaternion.identity);
         });
+
     }
 
     public void FindPositionsInCircle()
