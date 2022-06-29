@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b7cbb7e123dc84882e8b2579675182, type: 3}
+  m_Name: Game Settings
+  m_EditorClassIdentifier: 
+  speed: 400
+  rotationSpeed: 7
+  cameraTrasitionTime: 1.5
+  hamburgerBuildingIndex: 0
+  hotdogbuildingIndex: 0
+  iceCreambuildingIndex: 0
+  chipsbuildingIndex: 0
+  donutbuildingIndex: 0
+  popcornbuildingIndex: 0
+  hamburgerPrizeLVL0: 5
+  hamburgerPrizeLVL1: 7
+  hamburgerPrizeLVL2: 9
+  hamburgerPrizeLVL3: 11
+  hotDogPrizeLVL0: 7
+  hotDogPrizeLVL2: 9
+  hotDogPrizeLVL3: 11
+  hotDogPrizeLVL1: 13
+  iceCreamPrizeLVL0: 15
+  iceCreamPrizeLVL1: 17
+  iceCreamPrizeLVL2: 19
+  iceCreamPrizeLVL3: 21
+  donutPrizeLVL0: 9
+  donutPrizeLVL1: 0
+  donutPrizeLVL2: 0
+  donutPrizeLVL3: 0
+  popcornPrizeLVL0: 13
+  popcornPrizeLVL1: 0
+  popcornPrizeLVL2: 0
+  popcornPrizeLVL3: 0
+  chipPrizeLVL0: 15
+  chipPrizeLVL1: 0
+  chipPrizeLVL2: 0
+  chipPrizeLVL3: 0
