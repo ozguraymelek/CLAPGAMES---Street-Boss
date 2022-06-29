@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Activator : MonoBehaviour, IInteractable
@@ -15,7 +14,7 @@ public class Activator : MonoBehaviour, IInteractable
     public int collectedMoney;
     [SerializeField] TextMeshProUGUI remainingMoneyTMP;
     // public bool unlocked = true;
-    private bool upgraded = false;
+    [SerializeField] private bool upgraded = false;
 
     [Header("Scriptable Objects Reference")]
     [SerializeField] private PlayerSettings playerSettings;
@@ -116,7 +115,6 @@ public class Activator : MonoBehaviour, IInteractable
 
         if (StackManager.Instance.ReturnMoneyCount() == 0)
             return;
-
         //if (Globals.tutorialFinished == false)
         //    return;
 
@@ -127,17 +125,18 @@ public class Activator : MonoBehaviour, IInteractable
 
         if (playerSettings.takedDeck <= 0) return;
 
+        
         StackManager.Instance.RemoveObjectMoney(transform);
 
         _stayedTime = 0;
 
         //UI_Manager.Instance.DecreasePlayerMoney();
 
-        spendedDeck++;
+        
 
+        spendedDeck++;
         if (spendedDeck >= prices[levelIndex])
         {
-            playerSettings.takedDeck -= spendedDeck;
             StartCoroutine(DelayedUpgrade());
 
             UpdateScriptable();
@@ -150,8 +149,8 @@ public class Activator : MonoBehaviour, IInteractable
     {
         upgraded = true;
 
-
         spendedDeck = 0;
+        // playerSettings.takedDeck -= StackManager.Instance.spendedDeck;
         yield return new WaitForSeconds(0.8f);
 
         Upgrade();
@@ -173,7 +172,6 @@ public class Activator : MonoBehaviour, IInteractable
 
         levelIndex++;
         _levels[levelIndex].SetActive(true);
-
         UpdateRemainingMoney();
         UI_Manager.Instance.SetStandsLevelToUI();
         //EffectManager.Instance.ShieldBlast(transform.position);

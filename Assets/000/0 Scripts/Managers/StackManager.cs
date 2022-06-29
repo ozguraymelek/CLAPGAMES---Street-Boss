@@ -45,9 +45,6 @@ public class StackManager : Singleton<StackManager>
     private PlayerSettings playerSettings;
     [SerializeField] private GameSettings gameSettings;
 
-    [SerializeField]
-    private ModelImporter _modelImporter;
-    
     public GameObject moneyPrefabForCustomer;
 
     [SerializeField] private float moneyMoveSpeed;
@@ -86,6 +83,7 @@ public class StackManager : Singleton<StackManager>
     [Header("Booleans to Meshes")] 
     [SerializeField]
     public bool changeScaleFactorHamburger = false;
+    
     private void Start()
     {
         _firstFoodTrForRunner = FindObjectOfType<CkyBehaviour>().stackFirstPointTrForRunner;
@@ -511,12 +509,13 @@ public class StackManager : Singleton<StackManager>
         var randomY = Random.Range(-diss, diss);
         var randomPos = new Vector3(randomX, 0, randomY);
 
-        objTr.DOJump(targetTr.position + randomPos, 6.0f, 1, 0.8f).OnComplete(
+        objTr.DOJump(targetTr.position + randomPos, 6.0f, 1, .8f).OnComplete(
             () =>
             {
+                print("TTT");
+                playerSettings.takedDeck--;
                 objTr.gameObject.SetActive(false);
                 EffectManager.Instance.PopEffect(targetTr.position, Quaternion.identity);
-                playerSettings.takedDeck--;
                 UI_Manager.Instance.DecreasePlayerMoney();
                 //SoundManager.Instance.UseShield(targetTr.position);
                 //EffectManager.Instance.ShieldFountainSingle(targetTr.position + randomPos);
