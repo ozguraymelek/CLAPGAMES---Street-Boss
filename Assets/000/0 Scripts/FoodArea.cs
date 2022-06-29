@@ -4,36 +4,69 @@ using UnityEngine;
 
 public class FoodArea : MonoBehaviour, IInteractable
 {
+    [Header("References")] [Space] [SerializeField]
+    private Activator activator;
+    
     [Header("Settings")]
     [Space]
     private float _stayedTime;
 
-    void SetList()
-    {
-        foreach (Transform hamburger in StackManager.Instance.collectedHamburgers)
-        {
-            hamburger.GetComponent<Rigidbody>().isKinematic = true;
-        }
-    }
+    public static int indexStandHamburger = 0;
+    public static int indexStandHotDog = 0;
+    
+    [SerializeField] internal List<Transform> standPoints;
+
     public void OnEnter()
     {
-        Hamburger.Instance.hamburgerLevel1PosY = 0;
-        Hamburger.Instance.hamburgerLevel2PosY = 0;
-        Hamburger.Instance.hamburgerLevel3PosY = 0;
-        Hamburger.Instance.spawnTime = 0;
+        IndexResetWithActivatorID();
     }
 
     public void OnExit()
     {
-        
-        SetList();
-        Hamburger.Instance.canProduce = true;
+        CanProduceWithActivatorID(true);
+        StandCountResetWithActivatorID();
     }
 
     public void OnStay()
     {
-        Hamburger.Instance.canProduce = false;
-        
-        StackManager.Instance.Throw(FindObjectOfType<CkyBehaviour>());
+        CanProduceWithActivatorID(false);
+        //StackManager.Instance.Throw(FindObjectOfType<CkyBehaviour>());
+    }
+
+    private void CanProduceWithActivatorID(bool state)
+    {
+        switch (activator.activatorId)
+        {
+            case 0:
+                Hamburger.Instance.canProduce = state;
+                break;
+            case 1:
+                HotDog.Instance.canProduce = state;
+                break;
+        }
+    }
+    private void IndexResetWithActivatorID()
+    {
+        switch (activator.activatorId)
+        {
+            case 0:
+                indexStandHamburger = 0;
+                break;
+            case 1:
+                indexStandHotDog = 0;
+                break;
+        }
+    }
+    private void StandCountResetWithActivatorID()
+    {
+        switch (activator.activatorId)
+        {
+            case 0:
+                Hamburger.Instance.countSpawnedHamburger = 0;
+                break;
+            case 1:
+                HotDog.Instance.countSpawnedHotDog = 0;
+                break;
+        }
     }
 }

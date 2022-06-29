@@ -9,31 +9,33 @@ public class Hamburger : Singleton<Hamburger>
     [Space]
     [SerializeField] private GameSettings gameSettings;
 
+    [SerializeField] private FoodArea foodAreaRef;
+    
     [Header("Components")]
     [Space]
     [SerializeField] internal Transform foodArea;
     [SerializeField] private Food food;
     [SerializeField] internal Transform[] areas;
-    [SerializeField] internal List<Transform> hamburgers; 
 
     [Header("Settings")]
     [Space]
     public float spawnTime = 0;
     public bool canProduce = true;
-    public float hamburgerLevel1PosY = 0;
-    public float hamburgerLevel2PosY = 0;
-    public float hamburgerLevel3PosY = 0;
+    public int countSpawnedHamburger = 0;
 
     private void Update()
     {
         if (canProduce)
         {
-            spawnTime += Time.deltaTime;
-
-            if (spawnTime >= 5)
+            if (countSpawnedHamburger < foodAreaRef.standPoints.Count)
             {
-                HamburgerSpawn();
-                spawnTime = 0;
+                spawnTime += Time.deltaTime;
+
+                if (spawnTime >= 5)
+                {
+                    HamburgerSpawn();
+                    spawnTime = 0;
+                }
             }
         }
     }
@@ -51,6 +53,8 @@ public class Hamburger : Singleton<Hamburger>
                 Level3(food);
                 break;
         }
+
+        countSpawnedHamburger++;
     }
     private void Level1(Food food)
     {
@@ -58,11 +62,18 @@ public class Hamburger : Singleton<Hamburger>
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             instance.activeFood = instance.hamburgerTypes[0];
+            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
 
             instance.transform.parent = areas[0];
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
-            instance.transform.DOJump(foodArea.position + new Vector3(0f, hamburgerLevel1PosY, 0f), 2.0f, 1, 1f).OnComplete(() => Completed(instance.transform, 1));
+            
+            instance.transform
+                .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
+                    {
+                        Completed(instance.transform);
+                    }
+                );
         }
     }
     private void Level2(Food food)
@@ -71,11 +82,18 @@ public class Hamburger : Singleton<Hamburger>
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             instance.activeFood = instance.hamburgerTypes[1];
+            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
 
             instance.transform.parent = areas[1];
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
-            instance.transform.DOJump(foodArea.position + new Vector3(0f, hamburgerLevel2PosY, 0f), 2.0f, 1, 1f).OnComplete(() => Completed(instance.transform, 2));
+            
+            instance.transform
+                .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
+                    {
+                        Completed(instance.transform);
+                    }
+                );
         }
     }
     private void Level3(Food food)
@@ -84,30 +102,28 @@ public class Hamburger : Singleton<Hamburger>
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             instance.activeFood = instance.hamburgerTypes[2];
+            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
 
             instance.transform.parent = areas[2];
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
-            instance.transform.DOJump(foodArea.position + new Vector3(0f, hamburgerLevel3PosY, 0f), 2.0f, 1, 1f).OnComplete(() => Completed(instance.transform, 3));
+            
+            instance.transform
+                .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
+                    {
+                        Completed(instance.transform);
+                    }
+                );
         }
     }
     
-    private void Completed(Transform food, int level)
+    private void Completed(Transform instanceTransform)
     {
-        switch (level)
-        {
-            case 1:
-                StackManager.Instance.standHamburgerFoods.Add(food);
-                hamburgerLevel1PosY += 1.2f;
-                break;
-            case 2:
-                StackManager.Instance.standHamburgerFoods.Add(food);
-                hamburgerLevel2PosY += 1.2f;
-                break;
-            case 3:
-                StackManager.Instance.standHamburgerFoods.Add(food);
-                hamburgerLevel3PosY += 1.2f;
-                break;
-        } 
+        instanceTransform.GetComponent<Food>().enabled = false;
+        
+        StackManager.Instance.standHamburgerFoods.Add(instanceTransform.transform);
+        instanceTransform.transform.parent = foodAreaRef.standPoints[FoodArea.indexStandHamburger].transform;
+        instanceTransform.transform.localPosition = Vector3.zero;
+        FoodArea.indexStandHamburger++;
     }
 }

@@ -8,7 +8,9 @@ public class ActivatorDesk : Singleton<ActivatorDesk>, IActivatorDesk
     [Space]
     private float _stayedTime;
     public static int İndexDesk = 0;
-    public List<Transform> foodStackPoints;
+    public List<Transform> hamburgerFoodStackPoints;
+    
+    public List<Transform> hotDogFoodStackPoints;
 
     void IActivatorDesk.OnEnter()
     {
