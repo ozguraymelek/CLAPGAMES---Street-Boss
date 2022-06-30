@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ActivatorCustomer : MonoBehaviour
@@ -8,10 +10,6 @@ public class ActivatorCustomer : MonoBehaviour
     [Space]
     [SerializeField] private GameSettings gameSettings;
 
-    [Header("Settings")]
-    [Space]
-    [SerializeField] internal List<Transform> moneyIndexes;
-    public static int i = 0;
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<ICustomer>() != null)

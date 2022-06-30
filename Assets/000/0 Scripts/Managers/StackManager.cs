@@ -1,10 +1,12 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class StackManager : Singleton<StackManager>
 {
@@ -223,16 +225,17 @@ public class StackManager : Singleton<StackManager>
 
         if (prince.transform.GetChild(0).gameObject.activeInHierarchy)
         {
-            if (_food.activeFood == _food.hamburgerTypes[0])
+            if (_food.activeFood == _food.hamburgerTypes[0] ||_food.activeFood == _food.hamburgerTypes[1] || _food.activeFood == _food.hamburgerTypes[2])
             {
                 collectedHamburgers.Add(_food.transform);
+                _food.GetComponent<Rigidbody>().isKinematic = true;
             }
-            if (_food.activeFood == _food.hotDogTypes[0])
+            if (_food.activeFood == _food.hotDogTypes[0] || _food.activeFood == _food.hotDogTypes[1] || _food.activeFood == _food.hotDogTypes[2])
             {
                 collectedHotDogs.Add(_food.transform);
+                _food.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
-        
     }
 
     public void Remove(Food _food)
@@ -532,46 +535,48 @@ public class StackManager : Singleton<StackManager>
     {
         if (foods.Count > 0)
         {
-            Transform food = foods[foods.Count - 1].transform;
-            if (food.GetComponent<Food>().activeFood == food.GetComponent<Food>().hamburgerTypes[Random.Range(0,2)])
+            Food food = foods[foods.Count - 1];
+            if (food.activeFood == food.hamburgerTypes[0] ||food.activeFood == food.hamburgerTypes[1] || food.activeFood == food.hamburgerTypes[2])
             {
                 print("food is hamburger!");
-                food.parent = ActivatorDesk.Instance.hamburgerFoodStackPoints[indexHamburgerDesk];
-                // food.transform.localPosition = Vector3.zero;
+                food.transform.parent = ActivatorDesk.Instance.hamburgerFoodStackPoints[indexHamburgerDesk];
+                
                 Activator(food,ActivatorDesk.Instance.hamburgerFoodStackPoints[indexHamburgerDesk++]);
+                
                 foods.Remove(foods[foods.Count-1]);  
             }
-            if (food.GetComponent<Food>().activeFood == food.GetComponent<Food>().hotDogTypes[Random.Range(0,2)])
+            if (food.activeFood == food.hotDogTypes[0] || food.activeFood == food.hotDogTypes[1] || food.activeFood == food.hotDogTypes[2])
             {
                 if(collectedHotDogs.Count==ActivatorDesk.Instance.hotDogFoodStackPoints.Count) return;
                 
                 print("food is hotdog!");
-                food.parent = ActivatorDesk.Instance.hotDogFoodStackPoints[indexHotDogDesk];
-                // food.transform.localPosition = Vector3.zero;
+                food.transform.parent = ActivatorDesk.Instance.hotDogFoodStackPoints[indexHotDogDesk];
+                
                 Activator(food,ActivatorDesk.Instance.hotDogFoodStackPoints[indexHotDogDesk++]);
+                
                 foods.Remove(foods[foods.Count-1]);  
             }
         }
     }
 
-    void Activator(Transform objTr, Transform targetTr)
+    void Activator(Food food, Transform targetTr)
     {
-        objTr.DOJump(targetTr.position, 2.0f, 1, 0.8f).OnComplete(
+        food.transform.DOJump(targetTr.position, 2.0f, 1, 0.8f).OnComplete(
             () =>
             {
-                objectsOnDesk.Add(objTr);
+                objectsOnDesk.Add(food.transform);
                 
-                objTr.transform.localPosition = Vector3.zero;
+                food.transform.localPosition = Vector3.zero;
                 
-                objTr.GetComponent<Food>().activeFood.transform.DOShakeScale(shakeDurationStd, shakeStrengthStd);
+                food.activeFood.transform.DOShakeScale(shakeDurationStd, shakeStrengthStd);
                 
-                SetFoodsBoxColliderProperties(objTr.GetComponent<BoxCollider>());
-                SetFoodsRigidbodyProperties(objTr.GetComponent<Rigidbody>());
+                Effects(food, food.transform.position);
                 
-                Effects();
+                SetFoodsBoxColliderProperties(food.GetComponent<BoxCollider>());
+                SetFoodsRigidbodyProperties(food.GetComponent<Rigidbody>());
             });
         
-        objTr.DORotate(new Vector3(360, Random.Range(-25, 25), 0), 0.7f, RotateMode.FastBeyond360);
+        food.transform.DORotate(new Vector3(360, Random.Range(-25, 25), 0), 0.7f, RotateMode.FastBeyond360);
     }
 
     private void SetFoodsBoxColliderProperties(BoxCollider boxCollider)
@@ -585,75 +590,6 @@ public class StackManager : Singleton<StackManager>
         rigidBody.useGravity = true;
         rigidBody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
-
-    public void StackObjectToDesk(Prince prince)
-    {
-        foods.Clear();
-
-        AnimationController.SetLayerWeight(prince.player.anim, "isCarrying", false);
-
-        if (0 != ReturnHamburgerCount())
-        {
-            print(ReturnHamburgerCount());
-            Transform foodHamburger = collectedHamburgers[collectedHamburgers.Count - 1];
-            foodHamburger.transform.parent = stackPoints[0];
-
-            GoToTheActivator(foodHamburger.transform, stackPoints[0].position);
-
-            collectedHamburgers.Remove(foodHamburger);
-        }
-
-        if (0 != ReturnHotDogCount())
-        {
-            Transform foodHotDog = collectedHotDogs[collectedHotDogs.Count - 1];
-            foodHotDog.transform.parent = stackPoints[1];
-
-            GoToTheActivator(foodHotDog.transform, stackPoints[1].position);
-
-            collectedHotDogs.Remove(foodHotDog);
-        }
-
-        if (0 != ReturnIceCreamCount())
-        {
-            Transform foodIceCream = collectedIceCreams[collectedIceCreams.Count - 1];
-            foodIceCream.transform.parent = stackPoints[2];
-
-            GoToTheActivator(foodIceCream.transform, stackPoints[2].position);
-
-            collectedIceCreams.Remove(foodIceCream);
-        }
-
-        if (0 != ReturnDonutCount())
-        {
-            Transform foodDonut = collectedDonuts[collectedDonuts.Count - 1];
-            foodDonut.transform.parent = stackPoints[3];
-
-            GoToTheActivator(foodDonut.transform, stackPoints[3].position);
-
-            collectedDonuts.Remove(foodDonut);
-        }
-
-        if (0 != ReturnPopcornCount())
-        {
-            Transform foodPopcorn = collectedPopcorns[collectedPopcorns.Count - 1];
-            foodPopcorn.transform.parent = stackPoints[4];
-
-            GoToTheActivator(foodPopcorn.transform, stackPoints[4].position);
-
-            collectedPopcorns.Remove(foodPopcorn);
-        }
-
-        if (0 != ReturnChipCount())
-        {
-            Transform foodChip = collectedChips[collectedChips.Count - 1];
-            foodChip.transform.parent = stackPoints[5];
-
-            GoToTheActivator(foodChip.transform, stackPoints[5].position);
-
-            collectedChips.Remove(foodChip);
-        }
-    }
-
     private void GoToTheActivator(Transform objTr, Vector3 targetTr)
     {
         var diss = 0.7f;
@@ -668,23 +604,46 @@ public class StackManager : Singleton<StackManager>
             {
                 objectsOnDesk.Add(objTr);
                 objTr.GetComponent<BoxCollider>().enabled = false;
-
-                Effects();
             });
 
         objTr.DORotate(new Vector3(360, Random.Range(-25, 25), 0), 0.7f, RotateMode.FastBeyond360);
     }
-
-    void Effects()
+    #endregion
+    
+    #region Effects
+    
+    private void Effects(Food food, Vector3 effectPoint)
     {
-        EffectManager.Instance.StackOnDeskEffect(stackPoints[0].position, Quaternion.identity, FoodTypes.Hamburger);
-        EffectManager.Instance.StackOnDeskEffect(stackPoints[1].position, Quaternion.identity, FoodTypes.HotDog);
-        EffectManager.Instance.StackOnDeskEffect(stackPoints[2].position, Quaternion.identity, FoodTypes.IceCream);
-        EffectManager.Instance.StackOnDeskEffect(stackPoints[3].position, Quaternion.identity, FoodTypes.Donut);
-        EffectManager.Instance.StackOnDeskEffect(stackPoints[4].position, Quaternion.identity, FoodTypes.Popcorn);
-        EffectManager.Instance.StackOnDeskEffect(stackPoints[5].position, Quaternion.identity, FoodTypes.Chip);
+        if (food.activeFood == food.hamburgerTypes[0] || food.activeFood == food.hamburgerTypes[1] || food.activeFood == food.hamburgerTypes[2])
+        {
+            EffectManager.Instance.StackOnDeskEffect(effectPoint, Quaternion.identity, FoodTypes.Hamburger);
+        }
+        
+        if (food.activeFood == food.hotDogTypes[0] || food.activeFood == food.hotDogTypes[1] || food.activeFood == food.hotDogTypes[2])
+        {
+            EffectManager.Instance.StackOnDeskEffect(effectPoint, Quaternion.identity, FoodTypes.HotDog);
+        }
+        
+        if (food.activeFood == food.iceCreamTypes[0] || food.activeFood == food.iceCreamTypes[1] || food.activeFood == food.iceCreamTypes[2])
+        {
+            EffectManager.Instance.StackOnDeskEffect(effectPoint, Quaternion.identity, FoodTypes.IceCream);
+        }
+        
+        if (food.activeFood == food.donutTypes[0] || food.activeFood == food.donutTypes[1] || food.activeFood == food.donutTypes[2])
+        {
+            EffectManager.Instance.StackOnDeskEffect(effectPoint, Quaternion.identity, FoodTypes.Donut);
+        }
+        
+        if (food.activeFood == food.popcornTypes[0] ||food.activeFood == food.popcornTypes[1] || food.activeFood == food.popcornTypes[2])
+        {
+            EffectManager.Instance.StackOnDeskEffect(effectPoint, Quaternion.identity, FoodTypes.Popcorn);
+        }
+        
+        if (food.activeFood == food.chipsTypes[0] || food.activeFood == food.chipsTypes[1] || food.activeFood == food.chipsTypes[2] )
+        {
+            EffectManager.Instance.StackOnDeskEffect(effectPoint, Quaternion.identity, FoodTypes.Chip);
+        }
     }
-
     #endregion
 
     #region Activator - Customer
