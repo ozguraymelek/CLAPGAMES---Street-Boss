@@ -171,9 +171,15 @@ public class Activator : MonoBehaviour, IInteractable
             _levels[levelIndex].SetActive(false);
 
         levelIndex++;
+        _levels[levelIndex].transform.localScale = Vector3.one;
         _levels[levelIndex].SetActive(true);
+        
+        SoundManager.Instance.StandUpgradeSound(_levels[levelIndex].transform.position);
+        
         UpdateRemainingMoney();
+        
         UI_Manager.Instance.SetStandsLevelToUI();
+        
         //EffectManager.Instance.ShieldBlast(transform.position);
         //SoundManager.Instance.UpgradeBuilding(transform.position);
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,14 @@ public class Hamburger : Singleton<Hamburger>
     [Header("Settings Shake")] [Space]
     [SerializeField] private float shakeDuration;
     [SerializeField] private float shakeStrength;
-    
+    [SerializeField] private float shakeDurationStA;
+    [SerializeField] private float shakeStrengthStA;
+
+    private void OnDisable()
+    {
+        canProduce = false;
+    }
+
     private void Update()
     {
         if (canProduce)
@@ -90,7 +98,7 @@ public class Hamburger : Singleton<Hamburger>
         if (transform.GetChild(2).gameObject.activeInHierarchy)
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
-            instance.transform.localScale = new Vector3(10f, 10f, 10f);
+            
             instance.activeFood = instance.hamburgerTypes[1];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
@@ -98,7 +106,7 @@ public class Hamburger : Singleton<Hamburger>
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
-            Transform activeLevelTr = transform.GetChild(1);
+            Transform activeLevelTr = transform.GetChild(2);
             activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
             
             instance.transform
@@ -114,7 +122,7 @@ public class Hamburger : Singleton<Hamburger>
         if (transform.GetChild(3).gameObject.activeInHierarchy)
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
-            instance.transform.localScale = new Vector3(10f, 10f, 10f);
+            
             instance.activeFood = instance.hamburgerTypes[2];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
@@ -122,7 +130,7 @@ public class Hamburger : Singleton<Hamburger>
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
-            Transform activeLevelTr = transform.GetChild(1);
+            Transform activeLevelTr = transform.GetChild(3);
             activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
             
             instance.transform
@@ -137,11 +145,18 @@ public class Hamburger : Singleton<Hamburger>
     private void Completed(Transform instanceTransform)
     {
         instanceTransform.GetComponent<Food>().enabled = false;
+
+        EffectManager.Instance.StackOnStandEffect(instanceTransform.position, Quaternion.identity);
+        SoundManager.Instance.StackedStandToAreaSound(instanceTransform.position);
+        
+        instanceTransform.DOShakeScale(shakeDurationStA, shakeStrengthStA);
         
         StackManager.Instance.standHamburgerFoods.Add(instanceTransform.transform);
+        
         instanceTransform.parent = foodAreaRef.standPoints[FoodArea.indexStandHamburger].transform;
         instanceTransform.localPosition = Vector3.zero;
         instanceTransform.localScale = Vector3.one;
+        
         FoodArea.indexStandHamburger++;
     }
 }

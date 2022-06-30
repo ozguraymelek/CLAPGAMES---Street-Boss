@@ -13,6 +13,7 @@ public class FoodArea : MonoBehaviour, IInteractable
 
     public static int indexStandHamburger = 0;
     public static int indexStandHotDog = 0;
+    public static int indexStandIceCream = 0;
     
     [SerializeField] internal List<Transform> standPoints;
 
@@ -30,7 +31,6 @@ public class FoodArea : MonoBehaviour, IInteractable
     public void OnStay()
     {
         CanProduceWithActivatorID(false);
-        //StackManager.Instance.Throw(FindObjectOfType<CkyBehaviour>());
     }
 
     private void CanProduceWithActivatorID(bool state)
@@ -42,6 +42,9 @@ public class FoodArea : MonoBehaviour, IInteractable
                 break;
             case 1:
                 HotDog.Instance.canProduce = state;
+                break;
+            case 2:
+                IceCream.Instance.canProduce = state;
                 break;
         }
     }
@@ -55,6 +58,9 @@ public class FoodArea : MonoBehaviour, IInteractable
             case 1:
                 indexStandHotDog = 0;
                 break;
+            case 2:
+                indexStandIceCream = 0;
+                break;
         }
     }
     private void StandCountResetWithActivatorID()
@@ -66,6 +72,9 @@ public class FoodArea : MonoBehaviour, IInteractable
                 break;
             case 1:
                 HotDog.Instance.countSpawnedHotDog = 0;
+                break;
+            case 2:
+                IceCream.Instance.countSpawnedIceCream = 0;
                 break;
         }
     }

@@ -29,7 +29,8 @@ public class StackManager : Singleton<StackManager>
 
     public List<Transform> standHamburgerFoods;
     public List<Transform> standHotDogFoods;
-    
+    public List<Transform> standIceCreamFoods;
+
     public Transform canvasParent;
     public Image instanceMoneyPrefab;
     public Image instanceMoneyIcon;
@@ -54,8 +55,11 @@ public class StackManager : Singleton<StackManager>
     public GameObject moneyPrefabForCustomer;
 
     [SerializeField] private float moneyMoveSpeed;
+    
     public int indexHamburgerDesk = 0;
     public int indexHotDogDesk = 0;
+    public int indexIceCreamDesk = 0;
+    
     public enum FoodTypes
     {
         Hamburger,
@@ -207,6 +211,9 @@ public class StackManager : Singleton<StackManager>
 
     public void AddFood(Food _food)
     {
+        
+        SoundManager.Instance.RunnerStackSound(_food.transform.position);
+        
         foods.Add(_food);
         _food.isOnList = true;
         print("0.1.2");
@@ -225,14 +232,24 @@ public class StackManager : Singleton<StackManager>
 
         if (prince.transform.GetChild(0).gameObject.activeInHierarchy)
         {
-            if (_food.activeFood == _food.hamburgerTypes[0] ||_food.activeFood == _food.hamburgerTypes[1] || _food.activeFood == _food.hamburgerTypes[2])
+            if (_food.activeFood == _food.hamburgerTypes[0] ||_food.activeFood == _food.hamburgerTypes[1] || 
+                _food.activeFood == _food.hamburgerTypes[2])
             {
                 collectedHamburgers.Add(_food.transform);
                 _food.GetComponent<Rigidbody>().isKinematic = true;
             }
-            if (_food.activeFood == _food.hotDogTypes[0] || _food.activeFood == _food.hotDogTypes[1] || _food.activeFood == _food.hotDogTypes[2])
+            
+            if (_food.activeFood == _food.hotDogTypes[0] || _food.activeFood == _food.hotDogTypes[1] || 
+                _food.activeFood == _food.hotDogTypes[2])
             {
                 collectedHotDogs.Add(_food.transform);
+                _food.GetComponent<Rigidbody>().isKinematic = true;
+            }
+
+            if (_food.activeFood == _food.iceCreamTypes[0] || _food.activeFood == _food.iceCreamTypes[1] ||
+                _food.activeFood == _food.iceCreamTypes[2])
+            {
+                collectedIceCreams.Add(_food.transform);
                 _food.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
@@ -383,6 +400,7 @@ public class StackManager : Singleton<StackManager>
         {
             _food.activeFood.transform.DOScale(.7f, 1f);
             EffectManager.Instance.PopEffect(_food.transform.position + new Vector3(0, 0, -1), Quaternion.identity);
+            SoundManager.Instance.RunnerToIdleStackSound(_food.transform.position);
         });
     }
 
@@ -555,6 +573,17 @@ public class StackManager : Singleton<StackManager>
                 Activator(food,ActivatorDesk.Instance.hotDogFoodStackPoints[indexHotDogDesk++]);
                 
                 foods.Remove(foods[foods.Count-1]);  
+            }
+
+            if (food.activeFood == food.iceCreamTypes[0] || food.activeFood == food.iceCreamTypes[1] ||
+                food.activeFood == food.iceCreamTypes[2])
+            {
+                print("food is icecream!");
+                food.transform.parent = ActivatorDesk.Instance.iceCreamStackPoints[indexIceCreamDesk];
+
+                Activator(food, ActivatorDesk.Instance.iceCreamStackPoints[indexIceCreamDesk++]);
+
+                foods.Remove(foods[foods.Count - 1]);
             }
         }
     }
@@ -759,6 +788,7 @@ public class StackManager : Singleton<StackManager>
                     .DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
+                            ActivatorMoney.i++;
                             GoToStartPoint(customer);
                         }
                     );
@@ -778,10 +808,11 @@ public class StackManager : Singleton<StackManager>
                 var randomPos = new Vector3(randomX, .174f, randomY);
 
                 GameObject instanceMoneyToCustomer = Instantiate(moneyPrefabForCustomer, customer.transform);
-                instanceMoneyToCustomer.transform.DOJump(activatorMoney.transform.position + randomPos, 2.0f, 1, .7f)
+                instanceMoneyToCustomer.transform.DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f)
                     .OnComplete(() =>
                         {
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
+                            ActivatorMoney.i++;
                             GoToStartPoint(customer);
                         }
                     );
@@ -801,10 +832,11 @@ public class StackManager : Singleton<StackManager>
                 var randomPos = new Vector3(randomX, .174f, randomY);
 
                 GameObject instanceMoneyToCustomer = Instantiate(moneyPrefabForCustomer, customer.transform);
-                instanceMoneyToCustomer.transform.DOJump(activatorMoney.transform.position + randomPos, 2.0f, 1, .7f)
+                instanceMoneyToCustomer.transform.DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f)
                     .OnComplete(() =>
                         {
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
+                            ActivatorMoney.i++;
                             GoToStartPoint(customer);
                         }
                     );
@@ -824,10 +856,11 @@ public class StackManager : Singleton<StackManager>
                 var randomPos = new Vector3(randomX, .174f, randomY);
 
                 GameObject instanceMoneyToCustomer = Instantiate(moneyPrefabForCustomer, customer.transform);
-                instanceMoneyToCustomer.transform.DOJump(activatorMoney.transform.position + randomPos, 2.0f, 1, .7f)
+                instanceMoneyToCustomer.transform.DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f)
                     .OnComplete(() =>
                         {
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
+                            ActivatorMoney.i++;
                             GoToStartPoint(customer);
                         }
                     );

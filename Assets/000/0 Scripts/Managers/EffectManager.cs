@@ -5,7 +5,7 @@ using EZ_Pooling;
 
 public class EffectManager : Singleton<EffectManager>
 {
-    [SerializeField] Transform popEffect, bloodDirectional, upgradeEffect;
+    [SerializeField] Transform popEffect, bloodDirectional, upgradeEffect, stackOnStandEffect;
 
     [SerializeField] List<Transform> foodEffects;
 
@@ -58,6 +58,12 @@ public class EffectManager : Singleton<EffectManager>
         StartCoroutine(DespawnEffect(_effTr, 1.0f));
     }
 
+    public void StackOnStandEffect(Vector3 pos, Quaternion rot)
+    {
+        Transform _effTr = EZ_PoolManager.Spawn(stackOnStandEffect, pos, rot);
+
+        StartCoroutine(DespawnEffect(_effTr, 1.0f));
+    }
     private IEnumerator DespawnEffect(Transform _effTr, float _despawnTime)
     {
         yield return new WaitForSeconds(_despawnTime);

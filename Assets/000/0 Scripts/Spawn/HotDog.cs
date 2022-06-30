@@ -25,6 +25,8 @@ public class HotDog : Singleton<HotDog>
     [Header("Settings Shake")] [Space] 
     [SerializeField] private float shakeDuration;
     [SerializeField] private float shakeStrength;
+    [SerializeField] private float shakeDurationStA;
+    [SerializeField] private float shakeStrengthStA;
     
     private void OnDisable()
     {
@@ -102,7 +104,7 @@ public class HotDog : Singleton<HotDog>
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
-            Transform activeLevelTr = transform.GetChild(1);
+            Transform activeLevelTr = transform.GetChild(2);
             activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
             
             instance.transform
@@ -116,7 +118,7 @@ public class HotDog : Singleton<HotDog>
     
     private void Level3(Food food)
     {
-        if (transform.GetChild(2).gameObject.activeInHierarchy)
+        if (transform.GetChild(3).gameObject.activeInHierarchy)
         {
             Food instance = Instantiate(food, transform.position, quaternion.identity);
             instance.activeFood = instance.hotDogTypes[2];
@@ -126,7 +128,7 @@ public class HotDog : Singleton<HotDog>
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
-            Transform activeLevelTr = transform.GetChild(1);
+            Transform activeLevelTr = transform.GetChild(3);
             activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
             
             instance.transform
@@ -142,10 +144,17 @@ public class HotDog : Singleton<HotDog>
     {
         instanceTransform.GetComponent<Food>().enabled = false;
         
+        EffectManager.Instance.StackOnStandEffect(instanceTransform.position, Quaternion.identity);
+        SoundManager.Instance.StackedStandToAreaSound(instanceTransform.position);
+        
+        instanceTransform.DOShakeScale(shakeDurationStA, shakeStrengthStA);
+        
         StackManager.Instance.standHotDogFoods.Add(instanceTransform.transform);
+        
         instanceTransform.parent = foodAreaRef.standPoints[FoodArea.indexStandHotDog].transform;
         instanceTransform.localPosition = Vector3.zero;
         instanceTransform.localScale = Vector3.one;
+            
         FoodArea.indexStandHotDog++;
     }
 }

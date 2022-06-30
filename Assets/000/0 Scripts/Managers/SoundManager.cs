@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EZ_Pooling;
+using Unity.Mathematics;
 
 public class SoundManager : Singleton<SoundManager>
 {
     [SerializeField] AudioSource audioSource;
+    
+    [SerializeField] private Transform audioSourceStackedStandToArea;
+    [SerializeField] private Transform audioSourceStackRunnerToIdle;
+    [SerializeField] private Transform audioSourceStackRunner;
+    [SerializeField] private Transform audioSourceStandUpgrade;
+    
     [SerializeField] AudioClip popSound;
     [SerializeField] Transform popSound3DTr;
 
@@ -21,6 +28,33 @@ public class SoundManager : Singleton<SoundManager>
         StartCoroutine(DespawnEffect(_eff, 0.5f));
     }
 
+    public void StackedStandToAreaSound(Vector3 pos)
+    {
+        Transform sound = EZ_PoolManager.Spawn(audioSourceStackedStandToArea, pos, Quaternion.identity);
+
+        StartCoroutine(DespawnEffect(sound, .5f));
+    }
+
+    public void RunnerToIdleStackSound(Vector3 pos)
+    {
+        Transform sound = EZ_PoolManager.Spawn(audioSourceStackRunnerToIdle, pos, Quaternion.identity);
+        
+        StartCoroutine(DespawnEffect(sound, 2f));
+    }
+
+    public void RunnerStackSound(Vector3 pos)
+    {
+        Transform sound = EZ_PoolManager.Spawn(audioSourceStackRunner, pos, Quaternion.identity);
+
+        StartCoroutine(DespawnEffect(sound, .5f));
+    }
+
+    public void StandUpgradeSound(Vector3 pos)
+    {
+        Transform sound = EZ_PoolManager.Spawn(audioSourceStandUpgrade, pos, Quaternion.identity);
+
+        StartCoroutine(DespawnEffect(sound, 1f));
+    }
     private IEnumerator DespawnEffect(Transform _eff, float _despawnTime)
     {
         yield return new WaitForSeconds(_despawnTime);
