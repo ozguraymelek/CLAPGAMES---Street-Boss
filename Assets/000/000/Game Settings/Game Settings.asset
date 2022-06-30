@@ -15,7 +15,7 @@ MonoBehaviour:
   speed: 400
   rotationSpeed: 7
   cameraTrasitionTime: 1.5
-  hamburgerBuildingIndex: 0
+  hamburgerBuildingIndex: 1
   hotdogbuildingIndex: 0
   iceCreambuildingIndex: 0
   chipsbuildingIndex: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   chipPrizeLVL1: 0
   chipPrizeLVL2: 0
   chipPrizeLVL3: 0
-  hamburgerMeshLevel1: {fileID: 7982117104343717915, guid: 5aa61f7a0602ca64db5df2462b49278a,
+  hamburgerMeshLevel1: {fileID: -8679921383154817045, guid: 635b31624f05dbd40b01abbd9a273a3a,
     type: 3}
   hamburgerMeshLevel2: {fileID: 0}
   hamburgerMeshLevel3: {fileID: 0}

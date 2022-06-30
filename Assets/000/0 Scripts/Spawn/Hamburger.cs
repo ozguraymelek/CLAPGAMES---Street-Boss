@@ -20,9 +20,14 @@ public class Hamburger : Singleton<Hamburger>
     [Header("Settings")]
     [Space]
     public float spawnTime = 0;
+    public float spawnRate;
     public bool canProduce = true;
     public int countSpawnedHamburger = 0;
-
+    
+    [Header("Settings Shake")] [Space]
+    [SerializeField] private float shakeDuration;
+    [SerializeField] private float shakeStrength;
+    
     private void Update()
     {
         if (canProduce)
@@ -31,7 +36,7 @@ public class Hamburger : Singleton<Hamburger>
             {
                 spawnTime += Time.deltaTime;
 
-                if (spawnTime >= 5)
+                if (spawnTime >= spawnRate)
                 {
                     HamburgerSpawn();
                     spawnTime = 0;
@@ -61,12 +66,16 @@ public class Hamburger : Singleton<Hamburger>
         if (transform.GetChild(1).gameObject.activeInHierarchy)
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
+            
             instance.activeFood = instance.hamburgerTypes[0];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
 
-            instance.transform.parent = areas[0];
+            instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
+            
+            Transform activeLevelTr = transform.GetChild(1);
+            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
             
             instance.transform
                 .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
@@ -81,12 +90,16 @@ public class Hamburger : Singleton<Hamburger>
         if (transform.GetChild(2).gameObject.activeInHierarchy)
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
+            instance.transform.localScale = new Vector3(10f, 10f, 10f);
             instance.activeFood = instance.hamburgerTypes[1];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
 
-            instance.transform.parent = areas[1];
+            instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
+            
+            Transform activeLevelTr = transform.GetChild(1);
+            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
             
             instance.transform
                 .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
@@ -101,12 +114,16 @@ public class Hamburger : Singleton<Hamburger>
         if (transform.GetChild(3).gameObject.activeInHierarchy)
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
+            instance.transform.localScale = new Vector3(10f, 10f, 10f);
             instance.activeFood = instance.hamburgerTypes[2];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
 
-            instance.transform.parent = areas[2];
+            instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
+            
+            Transform activeLevelTr = transform.GetChild(1);
+            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
             
             instance.transform
                 .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
@@ -122,8 +139,9 @@ public class Hamburger : Singleton<Hamburger>
         instanceTransform.GetComponent<Food>().enabled = false;
         
         StackManager.Instance.standHamburgerFoods.Add(instanceTransform.transform);
-        instanceTransform.transform.parent = foodAreaRef.standPoints[FoodArea.indexStandHamburger].transform;
-        instanceTransform.transform.localPosition = Vector3.zero;
+        instanceTransform.parent = foodAreaRef.standPoints[FoodArea.indexStandHamburger].transform;
+        instanceTransform.localPosition = Vector3.zero;
+        instanceTransform.localScale = Vector3.one;
         FoodArea.indexStandHamburger++;
     }
 }

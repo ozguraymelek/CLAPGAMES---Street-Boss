@@ -18,8 +18,14 @@ public class HotDog : Singleton<HotDog>
 
     [Header("Settings")] [Space] 
     public float spawnTime = 0;
+    public float spawnRate;
     public bool canProduce = true;
     public int countSpawnedHotDog = 0;
+
+    [Header("Settings Shake")] [Space] 
+    [SerializeField] private float shakeDuration;
+    [SerializeField] private float shakeStrength;
+    
     private void OnDisable()
     {
         canProduce = false;
@@ -33,7 +39,7 @@ public class HotDog : Singleton<HotDog>
             {
                 spawnTime += Time.deltaTime;
 
-                if (spawnTime >= 2)
+                if (spawnTime >= spawnRate)
                 {
                     HotDogSpawn();
                     spawnTime = 0;
@@ -69,8 +75,11 @@ public class HotDog : Singleton<HotDog>
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
             
-            instance.transform.parent = areas[0];
+            instance.transform.parent = transform.GetChild(4);
             instance.activeFood.transform.localPosition = new Vector3(0f, .465f, 0f);
+            
+            Transform activeLevelTr = transform.GetChild(1);
+            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
             
             instance.transform
                 .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
@@ -90,9 +99,12 @@ public class HotDog : Singleton<HotDog>
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
                 
-            instance.transform.parent = areas[1];
+            instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
-                
+            
+            Transform activeLevelTr = transform.GetChild(1);
+            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
+            
             instance.transform
                 .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
                     {
@@ -111,8 +123,11 @@ public class HotDog : Singleton<HotDog>
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
             
-            instance.transform.parent = areas[2];
+            instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
+            
+            Transform activeLevelTr = transform.GetChild(1);
+            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
             
             instance.transform
                 .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
@@ -128,8 +143,9 @@ public class HotDog : Singleton<HotDog>
         instanceTransform.GetComponent<Food>().enabled = false;
         
         StackManager.Instance.standHotDogFoods.Add(instanceTransform.transform);
-        instanceTransform.transform.parent = foodAreaRef.standPoints[FoodArea.indexStandHotDog].transform;
-        instanceTransform.transform.localPosition = Vector3.zero;
+        instanceTransform.parent = foodAreaRef.standPoints[FoodArea.indexStandHotDog].transform;
+        instanceTransform.localPosition = Vector3.zero;
+        instanceTransform.localScale = Vector3.one;
         FoodArea.indexStandHotDog++;
     }
 }

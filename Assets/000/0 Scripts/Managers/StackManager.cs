@@ -45,6 +45,10 @@ public class StackManager : Singleton<StackManager>
     private PlayerSettings playerSettings;
     [SerializeField] private GameSettings gameSettings;
 
+    [Header("Settings Stack to Desk ")][Space]
+    [SerializeField] private float shakeDurationStd;
+    [SerializeField] private float shakeStrengthStd;
+    
     public GameObject moneyPrefabForCustomer;
 
     [SerializeField] private float moneyMoveSpeed;
@@ -80,10 +84,6 @@ public class StackManager : Singleton<StackManager>
     public float posToStackY = .5f;
     [SerializeField] private Prince prince;
 
-    [Header("Booleans to Meshes")] 
-    [SerializeField]
-    public bool changeScaleFactorHamburger = false;
-    
     private void Start()
     {
         _firstFoodTrForRunner = FindObjectOfType<CkyBehaviour>().stackFirstPointTrForRunner;
@@ -560,11 +560,17 @@ public class StackManager : Singleton<StackManager>
             () =>
             {
                 objectsOnDesk.Add(objTr);
+                
                 objTr.transform.localPosition = Vector3.zero;
+                
+                objTr.GetComponent<Food>().activeFood.transform.DOShakeScale(shakeDurationStd, shakeStrengthStd);
+                
                 SetFoodsBoxColliderProperties(objTr.GetComponent<BoxCollider>());
                 SetFoodsRigidbodyProperties(objTr.GetComponent<Rigidbody>());
+                
                 Effects();
             });
+        
         objTr.DORotate(new Vector3(360, Random.Range(-25, 25), 0), 0.7f, RotateMode.FastBeyond360);
     }
 
@@ -701,6 +707,7 @@ public class StackManager : Singleton<StackManager>
     {
         Destroy(objectsOnDesk[objectsOnDesk.Count - 1].GetComponent<Rigidbody>());
         objectsOnDesk[objectsOnDesk.Count - 1].GetComponent<BoxCollider>().enabled = false;
+        
         objectsOnDesk[objectsOnDesk.Count - 1].parent = customer.transform;
         objectsOnDesk[objectsOnDesk.Count - 1].localPosition = new Vector3(-.008f, 1f, .589f);
         objectsOnDesk[objectsOnDesk.Count - 1].eulerAngles = new Vector3(0f, 163.967f, 0f);
