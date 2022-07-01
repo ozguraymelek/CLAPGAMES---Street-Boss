@@ -23,13 +23,15 @@ public class StackManager : Singleton<StackManager>
 
     public List<Transform> collectedFromStandHamburgers;
 
-    public List<Transform> objectsOnDesk;
+    public List<Food> objectsOnDesk;
 
     public List<Transform> collectedMoneyFromCustomers = new List<Transform>();
 
     public List<Transform> standHamburgerFoods;
     public List<Transform> standHotDogFoods;
     public List<Transform> standIceCreamFoods;
+
+    public List<Food> stackedCurrentHamburgerObject;
 
     public Transform canvasParent;
     public Image instanceMoneyPrefab;
@@ -211,7 +213,6 @@ public class StackManager : Singleton<StackManager>
 
     public void AddFood(Food _food)
     {
-        
         SoundManager.Instance.RunnerStackSound(_food.transform.position);
         
         foods.Add(_food);
@@ -253,6 +254,8 @@ public class StackManager : Singleton<StackManager>
                 _food.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
+        
+        UI_Manager.Instance.IncreaseFoodCountToUI(_food);
     }
 
     public void Remove(Food _food)
@@ -399,6 +402,7 @@ public class StackManager : Singleton<StackManager>
         _food.transform.DOMove(_circlePositions[i], foodArriveTimeToCircle).OnComplete(() =>
         {
             _food.activeFood.transform.DOScale(.7f, 1f);
+            UI_Manager.Instance.DecreaseFoodCountToUI(_food);
             EffectManager.Instance.PopEffect(_food.transform.position + new Vector3(0, 0, -1), Quaternion.identity);
             SoundManager.Instance.RunnerToIdleStackSound(_food.transform.position);
         });
@@ -554,23 +558,31 @@ public class StackManager : Singleton<StackManager>
         if (foods.Count > 0)
         {
             Food food = foods[foods.Count - 1];
-            if (food.activeFood == food.hamburgerTypes[0] ||food.activeFood == food.hamburgerTypes[1] || food.activeFood == food.hamburgerTypes[2])
+            
+            if (food.activeFood == food.hamburgerTypes[0] ||food.activeFood == food.hamburgerTypes[1] || 
+                food.activeFood == food.hamburgerTypes[2])
             {
-                print("food is hamburger!");
-                food.transform.parent = ActivatorDesk.Instance.hamburgerFoodStackPoints[indexHamburgerDesk];
+                if (indexHamburgerDesk >= ActivatorDesk.Instance.hamburgerFoodStackPoints.Count - 1)
+                    indexHamburgerDesk = 0;
                 
-                Activator(food,ActivatorDesk.Instance.hamburgerFoodStackPoints[indexHamburgerDesk++]);
+                print("food is hamburger!");
+                food.transform.parent = ActivatorDesk.Instance.hamburgerFoodStackPoints[indexHamburgerDesk++];
+                
+                Activator(food,ActivatorDesk.Instance.hamburgerFoodStackPoints[indexHamburgerDesk]);
                 
                 foods.Remove(foods[foods.Count-1]);  
             }
-            if (food.activeFood == food.hotDogTypes[0] || food.activeFood == food.hotDogTypes[1] || food.activeFood == food.hotDogTypes[2])
+            
+            if (food.activeFood == food.hotDogTypes[0] || food.activeFood == food.hotDogTypes[1] || 
+                food.activeFood == food.hotDogTypes[2])
             {
-                if(collectedHotDogs.Count==ActivatorDesk.Instance.hotDogFoodStackPoints.Count) return;
+                if (indexHotDogDesk >= ActivatorDesk.Instance.hotDogFoodStackPoints.Count - 1)
+                    indexHotDogDesk = 0;
                 
-                print("food is hotdog!");
-                food.transform.parent = ActivatorDesk.Instance.hotDogFoodStackPoints[indexHotDogDesk];
+                print("food is hotdog!" + " " + indexHotDogDesk);
+                food.transform.parent = ActivatorDesk.Instance.hotDogFoodStackPoints[indexHotDogDesk++];
                 
-                Activator(food,ActivatorDesk.Instance.hotDogFoodStackPoints[indexHotDogDesk++]);
+                Activator(food,ActivatorDesk.Instance.hotDogFoodStackPoints[indexHotDogDesk]);
                 
                 foods.Remove(foods[foods.Count-1]);  
             }
@@ -578,13 +590,17 @@ public class StackManager : Singleton<StackManager>
             if (food.activeFood == food.iceCreamTypes[0] || food.activeFood == food.iceCreamTypes[1] ||
                 food.activeFood == food.iceCreamTypes[2])
             {
-                print("food is icecream!");
-                food.transform.parent = ActivatorDesk.Instance.iceCreamStackPoints[indexIceCreamDesk];
+                if (indexIceCreamDesk >= ActivatorDesk.Instance.iceCreamFoodStackPoints.Count - 1)
+                    indexIceCreamDesk = 0;
+                
+                print("food is icecream!" + " " + indexIceCreamDesk);
+                food.transform.parent = ActivatorDesk.Instance.iceCreamFoodStackPoints[indexIceCreamDesk++];
 
-                Activator(food, ActivatorDesk.Instance.iceCreamStackPoints[indexIceCreamDesk++]);
+                Activator(food, ActivatorDesk.Instance.iceCreamFoodStackPoints[indexIceCreamDesk]);
 
                 foods.Remove(foods[foods.Count - 1]);
             }
+            UI_Manager.Instance.DecreaseFoodCountToUI(food);
         }
     }
 
@@ -593,9 +609,10 @@ public class StackManager : Singleton<StackManager>
         food.transform.DOJump(targetTr.position, 2.0f, 1, 0.8f).OnComplete(
             () =>
             {
-                objectsOnDesk.Add(food.transform);
-                
+                objectsOnDesk.Add(food);
                 food.transform.localPosition = Vector3.zero;
+                
+                List(food);
                 
                 food.activeFood.transform.DOShakeScale(shakeDurationStd, shakeStrengthStd);
                 
@@ -619,7 +636,17 @@ public class StackManager : Singleton<StackManager>
         rigidBody.useGravity = true;
         rigidBody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
-    private void GoToTheActivator(Transform objTr, Vector3 targetTr)
+
+    void List(Food food)
+    {
+        if (food.activeFood == food.hamburgerTypes[0] ||
+            food.activeFood == food.hamburgerTypes[1] ||
+            food.activeFood == food.hamburgerTypes[2])
+        {
+            stackedCurrentHamburgerObject.Add(food);
+        }
+    }
+    private void GoToTheActivator(Food food, Vector3 targetTr)
     {
         var diss = 0.7f;
         var randomX = Random.Range(-diss, diss);
@@ -627,15 +654,15 @@ public class StackManager : Singleton<StackManager>
         var randomPos = new Vector3(randomX, 0, randomY);
 
 
-        objTr.DOScale(1.5f, 1f);
-        objTr.DOJump(targetTr, 6.0f, 1, 0.8f).OnComplete(
+        food.transform.DOScale(1.5f, 1f);
+        food.transform.DOJump(targetTr, 6.0f, 1, 0.8f).OnComplete(
             () =>
             {
-                objectsOnDesk.Add(objTr);
-                objTr.GetComponent<BoxCollider>().enabled = false;
+                objectsOnDesk.Add(food);
+                food.GetComponent<BoxCollider>().enabled = false;
             });
 
-        objTr.DORotate(new Vector3(360, Random.Range(-25, 25), 0), 0.7f, RotateMode.FastBeyond360);
+        food.transform.DORotate(new Vector3(360, Random.Range(-25, 25), 0), 0.7f, RotateMode.FastBeyond360);
     }
     #endregion
     
@@ -682,7 +709,7 @@ public class StackManager : Singleton<StackManager>
     public void GetAllFoods(Customer targetTr, ActivatorMoney activatorMoney, GameSettings gameSettings)
     {
         SetAnimation(targetTr);
-        objectsOnDesk[objectsOnDesk.Count - 1].DOJump(targetTr.transform.position, 6.0f, 1, .6f).OnComplete(
+        objectsOnDesk[objectsOnDesk.Count - 1].transform.DOJump(targetTr.transform.position, 6.0f, 1, .6f).OnComplete(
             () => ResetObjectTr(targetTr, activatorMoney, gameSettings));
     }
 
@@ -696,9 +723,9 @@ public class StackManager : Singleton<StackManager>
         Destroy(objectsOnDesk[objectsOnDesk.Count - 1].GetComponent<Rigidbody>());
         objectsOnDesk[objectsOnDesk.Count - 1].GetComponent<BoxCollider>().enabled = false;
         
-        objectsOnDesk[objectsOnDesk.Count - 1].parent = customer.transform;
-        objectsOnDesk[objectsOnDesk.Count - 1].localPosition = new Vector3(-.008f, 1f, .589f);
-        objectsOnDesk[objectsOnDesk.Count - 1].eulerAngles = new Vector3(0f, 163.967f, 0f);
+        objectsOnDesk[objectsOnDesk.Count - 1].transform.parent = customer.transform;
+        objectsOnDesk[objectsOnDesk.Count - 1].transform.localPosition = new Vector3(-.008f, 1f, .589f);
+        objectsOnDesk[objectsOnDesk.Count - 1].transform.eulerAngles = new Vector3(0f, 163.967f, 0f);
         //objectsOnDesk[objectsOnDesk.Count - 1].DOScale(.5f, 1f); 
 
         Sale(customer, activatorMoney, gameSettings);
@@ -739,6 +766,7 @@ public class StackManager : Singleton<StackManager>
                 instanceMoneyToCustomer.transform
                     .DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            // UI_Manager.Instance.DecreaseFoodCountToUI(food);
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
                             ActivatorMoney.i++;
                             GoToStartPoint(customer);
@@ -763,6 +791,7 @@ public class StackManager : Singleton<StackManager>
                 instanceMoneyToCustomer.transform
                     .DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            // UI_Manager.Instance.DecreaseFoodCountToUI(food);
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
                             ActivatorMoney.i++;
                             GoToStartPoint(customer);
@@ -787,6 +816,7 @@ public class StackManager : Singleton<StackManager>
                 instanceMoneyToCustomer.transform
                     .DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            // UI_Manager.Instance.DecreaseFoodCountToUI(food);
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
                             ActivatorMoney.i++;
                             GoToStartPoint(customer);
@@ -811,6 +841,7 @@ public class StackManager : Singleton<StackManager>
                 instanceMoneyToCustomer.transform.DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f)
                     .OnComplete(() =>
                         {
+                            // UI_Manager.Instance.DecreaseFoodCountToUI(food);
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
                             ActivatorMoney.i++;
                             GoToStartPoint(customer);
@@ -835,6 +866,7 @@ public class StackManager : Singleton<StackManager>
                 instanceMoneyToCustomer.transform.DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f)
                     .OnComplete(() =>
                         {
+                            // UI_Manager.Instance.DecreaseFoodCountToUI(food);
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
                             ActivatorMoney.i++;
                             GoToStartPoint(customer);
@@ -859,6 +891,7 @@ public class StackManager : Singleton<StackManager>
                 instanceMoneyToCustomer.transform.DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f)
                     .OnComplete(() =>
                         {
+                            // UI_Manager.Instance.DecreaseFoodCountToUI(food);
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
                             ActivatorMoney.i++;
                             GoToStartPoint(customer);
@@ -1083,29 +1116,5 @@ public class StackManager : Singleton<StackManager>
             yield return null;
         }
     }
-    #endregion
-
-    #region Activator - Stack Stand Object To Desk
-
-    public void StackStandObjectToDesk(Prince prince)
-    {
-        foods.Clear();
-
-        AnimationController.SetLayerWeight(prince.player.anim, "isCarrying", false);
-
-        if (collectedHamburgers.Count != 0)
-        {
-            // CkyEvents.OnFixedUpdate -= UpdatePositionsForIdle;
-
-            print("STACKING!!");
-            Transform foodHamburger = collectedHamburgers[collectedHamburgers.Count - 1];
-            foodHamburger.transform.parent = stackPoints[0];
-
-            GoToTheActivator(foodHamburger.transform, stackPoints[0].position);
-
-            collectedHamburgers.Remove(foodHamburger);
-        }
-    }
-
     #endregion
 }

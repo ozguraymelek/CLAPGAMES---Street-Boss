@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using EZ_Pooling;
+using UnityEngine;
 
 public class JoystickPlayer : Singleton<JoystickPlayer>
 {
+    [Header("Scriptable Object References")] [SerializeField]
+    private PlayerSettings playerSettings;
+    
     public float speed;
     public float rotationSpeed;
     public DynamicJoystick dynamicJoystick;
@@ -11,9 +15,12 @@ public class JoystickPlayer : Singleton<JoystickPlayer>
 
     [Header("Components")]
     [SerializeField] internal Transform playerMoneyParentTr;
+
+    [SerializeField] internal Transform dollarPrefab;
     private void Start()
     {
         GetComponents();
+        SpawnMoney();
     }
 
     private void OnEnable()
@@ -22,6 +29,19 @@ public class JoystickPlayer : Singleton<JoystickPlayer>
         dynamicJoystick.gameObject.SetActive(true);
     }
 
+    private void SpawnMoney()
+    {
+        for (int i = 0; i < playerSettings.takedDeck; i++)
+        {
+            Transform instanceDollar = EZ_PoolManager.Spawn(dollarPrefab, Vector3.zero, Quaternion.identity);
+            instanceDollar.parent = playerMoneyParentTr;
+            instanceDollar.localPosition = Vector3.zero;
+            
+            StackManager.Instance.moneys.Add(instanceDollar);
+            
+            instanceDollar.gameObject.SetActive(false);
+        }
+    }
     private void GetComponents()
     {
         anim = GetComponent<Animator>();

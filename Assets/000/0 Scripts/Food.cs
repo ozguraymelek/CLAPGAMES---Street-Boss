@@ -88,7 +88,7 @@ public class Food : MonoBehaviour, IStackable
     void IStackable.Change(Door.DoorType _doorType, GameSettings gameSettings)
     {
         activeFood.SetActive(false);
-
+        UI_Manager.Instance.DecreaseFoodCountToUI(this);
         switch (_doorType)
         {
             case Door.DoorType.Hamburger:
@@ -110,8 +110,8 @@ public class Food : MonoBehaviour, IStackable
                 PopcornInfo(gameSettings);
                 break;
         }
-
         activeFood.SetActive(true);
+        UI_Manager.Instance.IncreaseFoodCountToUI(this);
     }
 
     #region Door Activator - Hamburger
@@ -172,7 +172,7 @@ public class Food : MonoBehaviour, IStackable
                 print("Hot Dog changed to lvl 3");
                 break;
         }
-        transform.tag = "Hot Dog";
+        transform.tag = "HotDog";
     }
     #endregion
 
@@ -203,7 +203,7 @@ public class Food : MonoBehaviour, IStackable
                 print("Ice Cream changed to lvl 3");
                 break;
         }
-        transform.tag = "Ice Cream";
+        transform.tag = "IceCream";
     }
     #endregion
 

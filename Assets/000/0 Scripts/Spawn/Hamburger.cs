@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Random = System.Random;
 
-public class Hamburger : Singleton<Hamburger>
+public class Hamburger : MonoBehaviour
 {
     [Header("Scriptable Object References")]
     [Space]
     [SerializeField] private GameSettings gameSettings;
 
-    [SerializeField] private FoodArea foodAreaRef;
+    [SerializeField] private HamburgerFoodArea foodAreaRef;
     
     [Header("Components")]
     [Space]
@@ -36,6 +37,11 @@ public class Hamburger : Singleton<Hamburger>
         canProduce = false;
     }
 
+    private void OnApplicationQuit()
+    {
+        countSpawnedHamburger = 0;
+    }
+
     private void Update()
     {
         if (canProduce)
@@ -43,13 +49,13 @@ public class Hamburger : Singleton<Hamburger>
             if (countSpawnedHamburger < foodAreaRef.standPoints.Count)
             {
                 spawnTime += Time.deltaTime;
-
                 if (spawnTime >= spawnRate)
                 {
                     HamburgerSpawn();
                     spawnTime = 0;
                 }
-            }
+            }else
+                canProduce = false;
         }
     }
     private void HamburgerSpawn()
@@ -83,10 +89,25 @@ public class Hamburger : Singleton<Hamburger>
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
             Transform activeLevelTr = transform.GetChild(1);
-            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
+            activeLevelTr.localScale=Vector3.one;
+            if (activeLevelTr.localScale.x < 0 || 
+                activeLevelTr.localScale.y < 0 ||
+                activeLevelTr.localScale.z < 0 )
+            {
+                activeLevelTr.localScale = Vector3.one;
+            }
+            
+            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                .OnComplete(() =>
+                {
+                    if (canProduce == false)
+                    {
+                        activeLevelTr.DOScale(1f, shakeDuration);
+                    }
+                });
             
             instance.transform
-                .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
+                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
                     {
                         Completed(instance.transform);
                     }
@@ -107,10 +128,25 @@ public class Hamburger : Singleton<Hamburger>
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
             Transform activeLevelTr = transform.GetChild(2);
-            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
+            activeLevelTr.localScale=Vector3.one;
+            if (activeLevelTr.localScale.x < 0 || 
+                activeLevelTr.localScale.y < 0 ||
+                activeLevelTr.localScale.z < 0 )
+            {
+                activeLevelTr.localScale = Vector3.one;
+            }
+            
+            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                .OnComplete(() =>
+                {
+                    if (canProduce == false)
+                    {
+                        activeLevelTr.DOScale(1f, shakeDuration);
+                    }
+                });
             
             instance.transform
-                .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
+                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
                     {
                         Completed(instance.transform);
                     }
@@ -131,10 +167,25 @@ public class Hamburger : Singleton<Hamburger>
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
             Transform activeLevelTr = transform.GetChild(3);
-            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
+            activeLevelTr.localScale=Vector3.one;
+            if (activeLevelTr.localScale.x < 0 || 
+                activeLevelTr.localScale.y < 0 ||
+                activeLevelTr.localScale.z < 0 )
+            {
+                activeLevelTr.localScale = Vector3.one;
+            }
+            
+            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                .OnComplete(() =>
+                {
+                    if (canProduce == false)
+                    {
+                        activeLevelTr.DOScale(1f, shakeDuration);
+                    }
+                });
             
             instance.transform
-                .DOJump(foodAreaRef.standPoints[FoodArea.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
+                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
                     {
                         Completed(instance.transform);
                     }
@@ -153,10 +204,10 @@ public class Hamburger : Singleton<Hamburger>
         
         StackManager.Instance.standHamburgerFoods.Add(instanceTransform.transform);
         
-        instanceTransform.parent = foodAreaRef.standPoints[FoodArea.indexStandHamburger].transform;
+        instanceTransform.parent = foodAreaRef.standPoints[foodAreaRef.indexStandHamburger].transform;
         instanceTransform.localPosition = Vector3.zero;
         instanceTransform.localScale = Vector3.one;
         
-        FoodArea.indexStandHamburger++;
+        foodAreaRef.indexStandHamburger++;
     }
 }

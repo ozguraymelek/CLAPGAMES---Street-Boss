@@ -177,9 +177,6 @@ public class Activator : MonoBehaviour, IInteractable
         SoundManager.Instance.StandUpgradeSound(_levels[levelIndex].transform.position);
         
         UpdateRemainingMoney();
-        
-        UI_Manager.Instance.SetStandsLevelToUI();
-        
         //EffectManager.Instance.ShieldBlast(transform.position);
         //SoundManager.Instance.UpgradeBuilding(transform.position);
     }

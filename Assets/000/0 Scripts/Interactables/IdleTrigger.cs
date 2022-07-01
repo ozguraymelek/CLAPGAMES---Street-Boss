@@ -27,10 +27,16 @@ public class IdleTrigger : MonoBehaviour
     private void OnTransToRunner()
     {
         EnableColliderTrigger(true);
+        ActivateGameInfoPanel();
     }
 
     public void EnableColliderTrigger(bool b)
     {
         _collider.isTrigger = b;
+    }
+
+    public void ActivateGameInfoPanel()
+    {
+        UI_Manager.Instance.panelGameInfoCanvas.SetActive(true);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,20 +17,28 @@ public class UI_Manager : Singleton<UI_Manager>
     [Space]
     [SerializeField] internal TMP_Text tmp_PlayerMoney;
     [SerializeField] internal GameObject activeIcon;
+    [SerializeField] internal GameObject panelGameInfoCanvas;
 
-    [Header("Stand Components")] [Space] 
+    [Header("Food Info Components")] [Space] 
     
-    [SerializeField] internal Text hamburgerStandLevel;
-    [SerializeField] internal Text hotdogStandLevel;
-    [SerializeField] internal Text icecreamStandLevel;
-    [SerializeField] internal Text donutStandLevel;
-    [SerializeField] internal Text popcornStandLevel;
-    [SerializeField] internal Text chipStandLevel;
+    [SerializeField] internal Text hamburgerCountInfo;
+    [SerializeField] internal Text hotdogCountInfo;
+    [SerializeField] internal Text icecreamCountInfo;
+    [SerializeField] internal Text donutCountInfo;
+    [SerializeField] internal Text popcornCountInfo;
+    [SerializeField] internal Text chipCountInfo;
+    
+    [Header("Food Info Settings")][Space]
+    [SerializeField] internal int hamburgerCount;
+    [SerializeField] internal int hotdogCount;
+    [SerializeField] internal int icecreamCount;
+    [SerializeField] internal int donutCount;
+    [SerializeField] internal int popcornCount;
+    [SerializeField] internal int chipCount;
 
     private void Start()
     {
         tmp_PlayerMoney.text = playerSettings.playerMoney.ToString();
-        SetStandsLevelToUI();
     }
 
     #region Player Info
@@ -83,51 +92,91 @@ public class UI_Manager : Singleton<UI_Manager>
     }
     #endregion
 
-    #region Stands Level Info to UI
+    #region Food Count Info to UI
 
-    public void SetStandsLevelToUI()
+    public void IncreaseFoodCountToUI(Food _food)
     {
-        hamburgerStandLevel.text = gameSettings.hamburgerBuildingIndex.ToString();
-        hotdogStandLevel.text = gameSettings.hotdogbuildingIndex.ToString();
-        icecreamStandLevel.text = gameSettings.iceCreambuildingIndex.ToString();
-        donutStandLevel.text = gameSettings.donutbuildingIndex.ToString();
-        popcornStandLevel.text = gameSettings.popcornbuildingIndex.ToString();
-        chipStandLevel.text = gameSettings.chipsbuildingIndex.ToString();
+        if (_food.activeFood == _food.hamburgerTypes[0] ||_food.activeFood == _food.hamburgerTypes[1] || 
+                _food.activeFood == _food.hamburgerTypes[2])
+            {
+                hamburgerCount++;
+                hamburgerCountInfo.text = hamburgerCount.ToString();
+            }
+            
+            if (_food.activeFood == _food.hotDogTypes[0] || _food.activeFood == _food.hotDogTypes[1] || 
+                _food.activeFood == _food.hotDogTypes[2])
+            {
+                hotdogCount++;
+                hotdogCountInfo.text = hotdogCount.ToString();
+            }
 
-        SetTextColor();
+            if (_food.activeFood == _food.iceCreamTypes[0] || _food.activeFood == _food.iceCreamTypes[1] ||
+                _food.activeFood == _food.iceCreamTypes[2])
+            {
+                icecreamCount++;
+                icecreamCountInfo.text = icecreamCount.ToString();
+            }
+            if (_food.activeFood == _food.donutTypes[0] || _food.activeFood == _food.donutTypes[1] ||
+                _food.activeFood == _food.donutTypes[2])
+            {
+                donutCount++;
+                donutCountInfo.text = donutCount.ToString();
+            }
+            if (_food.activeFood == _food.popcornTypes[0] || _food.activeFood == _food.popcornTypes[1] ||
+                 _food.activeFood == _food.popcornTypes[2])
+            {
+                popcornCount++;
+                popcornCountInfo.text = popcornCount.ToString();
+            }
+            if (_food.activeFood == _food.chipsTypes[0] || _food.activeFood == _food.chipsTypes[1] ||
+                 _food.activeFood == _food.chipsTypes[2])
+            {
+                chipCount++;
+                popcornCountInfo.text = chipCount.ToString();
+            }
     }
     
-    private void SetTextColor()
+    public void DecreaseFoodCountToUI(Food _food)
     {
-        if (gameSettings.hamburgerBuildingIndex != 0)
-            hamburgerStandLevel.color = Color.green;
-        else
-            hamburgerStandLevel.color = Color.red;
-        
-        if (gameSettings.hotdogbuildingIndex != 0)
-            hotdogStandLevel.color = Color.green;
-        else
-            hotdogStandLevel.color = Color.red;
-        
-        if (gameSettings.iceCreambuildingIndex != 0)
-            icecreamStandLevel.color = Color.green;
-        else
-            icecreamStandLevel.color = Color.red;
-        
-        if (gameSettings.donutbuildingIndex != 0)
-            donutStandLevel.color = Color.green;
-        else
-            donutStandLevel.color = Color.red;
-        
-        if (gameSettings.popcornbuildingIndex != 0)
-            popcornStandLevel.color = Color.green;
-        else
-            popcornStandLevel.color = Color.red;
-        
-        if (gameSettings.chipsbuildingIndex != 0)
-            chipStandLevel.color = Color.green;
-        else
-            chipStandLevel.color = Color.red;
+        if (_food.activeFood == _food.hamburgerTypes[0] ||_food.activeFood == _food.hamburgerTypes[1] || 
+            _food.activeFood == _food.hamburgerTypes[2])
+        {
+            hamburgerCount--;
+            hamburgerCountInfo.text = hamburgerCount.ToString();
+        }
+            
+        if (_food.activeFood == _food.hotDogTypes[0] || _food.activeFood == _food.hotDogTypes[1] || 
+            _food.activeFood == _food.hotDogTypes[2])
+        {
+            hotdogCount--;
+            hotdogCountInfo.text = hotdogCount.ToString();
+        }
+
+        if (_food.activeFood == _food.iceCreamTypes[0] || _food.activeFood == _food.iceCreamTypes[1] ||
+            _food.activeFood == _food.iceCreamTypes[2])
+        {
+            icecreamCount--;
+            icecreamCountInfo.text = icecreamCount.ToString();
+        }
+        if (_food.activeFood == _food.donutTypes[0] || _food.activeFood == _food.donutTypes[1] ||
+            _food.activeFood == _food.donutTypes[2])
+        {
+            donutCount--;
+            donutCountInfo.text = donutCount.ToString();
+        }
+        if (_food.activeFood == _food.popcornTypes[0] || _food.activeFood == _food.popcornTypes[1] ||
+            _food.activeFood == _food.popcornTypes[2])
+        {
+            popcornCount--;
+            popcornCountInfo.text = popcornCount.ToString();
+        }
+        if (_food.activeFood == _food.chipsTypes[0] || _food.activeFood == _food.chipsTypes[1] ||
+            _food.activeFood == _food.chipsTypes[2])
+        {
+            chipCount--;
+            popcornCountInfo.text = chipCount.ToString();
+        }
     }
+
     #endregion
 }

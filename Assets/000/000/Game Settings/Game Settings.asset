@@ -45,7 +45,6 @@ MonoBehaviour:
   chipPrizeLVL1: 0
   chipPrizeLVL2: 0
   chipPrizeLVL3: 0
-  hamburgerMeshLevel1: {fileID: -8679921383154817045, guid: 635b31624f05dbd40b01abbd9a273a3a,
-    type: 3}
+  hamburgerMeshLevel1: {fileID: 0}
   hamburgerMeshLevel2: {fileID: 0}
   hamburgerMeshLevel3: {fileID: 0}

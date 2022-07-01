@@ -5,11 +5,11 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.Mathematics;
 
-public class IceCream : Singleton<IceCream>
+public class IceCream : MonoBehaviour
 {
     [Header("Scriptable Object References")] [Space] 
     [SerializeField] private GameSettings gameSettings;
-    [SerializeField] private FoodArea foodAreaRef;
+    [SerializeField] private IceCreamFoodArea foodAreaRef;
     
     [Header("Components")] [Space] 
     [SerializeField] private Food food;
@@ -31,6 +31,11 @@ public class IceCream : Singleton<IceCream>
         canProduce = false;
     }
 
+    private void OnApplicationQuit()
+    {
+        countSpawnedIceCream = 0;
+    }
+
     private void Update()
     {
         if (canProduce)
@@ -44,7 +49,8 @@ public class IceCream : Singleton<IceCream>
                     IceCreamSpawn();
                     spawnTime = 0;
                 }
-            }
+            }else
+                canProduce = false;
         }
     }
 
@@ -70,7 +76,7 @@ public class IceCream : Singleton<IceCream>
     {
         if (transform.GetChild(1).gameObject.activeInHierarchy)
         {
-            Food instance = Instantiate(food, transform.position, quaternion.identity);
+            Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.iceCreamTypes[0];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
@@ -80,10 +86,25 @@ public class IceCream : Singleton<IceCream>
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
             Transform activeLevelTr = transform.GetChild(1);
-            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
+            activeLevelTr.localScale=Vector3.one;
+            if (activeLevelTr.localScale.x < 0 || 
+                activeLevelTr.localScale.y < 0 ||
+                activeLevelTr.localScale.z < 0 )
+            {
+                activeLevelTr.localScale = Vector3.one;
+            }
+            
+            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                .OnComplete(() =>
+                {
+                    if (canProduce == false)
+                    {
+                        activeLevelTr.DOScale(1f, shakeDuration);
+                    }
+                });
             
             instance.transform
-                .DOJump(foodAreaRef.standPoints[FoodArea.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
+                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
                     {
                         Completed(instance.transform);
                     }
@@ -106,10 +127,25 @@ public class IceCream : Singleton<IceCream>
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
             Transform activeLevelTr = transform.GetChild(2);
-            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
+            activeLevelTr.localScale=Vector3.one;
+            if (activeLevelTr.localScale.x < 0 || 
+                activeLevelTr.localScale.y < 0 ||
+                activeLevelTr.localScale.z < 0 )
+            {
+                activeLevelTr.localScale = Vector3.one;
+            }
+            
+            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                .OnComplete(() =>
+                {
+                    if (canProduce == false)
+                    {
+                        activeLevelTr.DOScale(1f, shakeDuration);
+                    }
+                });
             
             instance.transform
-                .DOJump(foodAreaRef.standPoints[FoodArea.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
+                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
                     {
                         Completed(instance.transform);
                     }
@@ -132,10 +168,25 @@ public class IceCream : Singleton<IceCream>
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
             Transform activeLevelTr = transform.GetChild(3);
-            activeLevelTr.DOShakeScale(shakeDuration, shakeStrength); 
+            activeLevelTr.localScale=Vector3.one;
+            if (activeLevelTr.localScale.x < 0 || 
+                activeLevelTr.localScale.y < 0 ||
+                activeLevelTr.localScale.z < 0 )
+            {
+                activeLevelTr.localScale = Vector3.one;
+            }
+            
+            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                .OnComplete(() =>
+                {
+                    if (canProduce == false)
+                    {
+                        activeLevelTr.DOScale(1f, shakeDuration);
+                    }
+                });
             
             instance.transform
-                .DOJump(foodAreaRef.standPoints[FoodArea.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
+                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
                     {
                         Completed(instance.transform);
                     }
@@ -150,14 +201,14 @@ public class IceCream : Singleton<IceCream>
         EffectManager.Instance.StackOnStandEffect(instanceTransform.position, Quaternion.identity);
         SoundManager.Instance.StackedStandToAreaSound(instanceTransform.position);
         
-        instanceTransform.DOShakeScale(shakeDurationStA, shakeStrengthStA);
+        instanceTransform.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeStrengthStA);
         
         StackManager.Instance.standIceCreamFoods.Add(instanceTransform.transform);
         
-        instanceTransform.parent = foodAreaRef.standPoints[FoodArea.indexStandIceCream].transform;
+        instanceTransform.parent = foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].transform;
         instanceTransform.localPosition = Vector3.zero;
         instanceTransform.localScale = Vector3.one;
             
-        FoodArea.indexStandIceCream++;
+        foodAreaRef.indexStandIceCream++;
     }
 }
