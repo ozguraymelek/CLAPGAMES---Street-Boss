@@ -298,16 +298,19 @@ public class StackManager : Singleton<StackManager>
 
     public void BeScattered(Food _food)
     {
-        int damagedIndex = foods.IndexOf(_food);
-
-        print(damagedIndex);
-
-        int foodIndex = foods.Count;
-
-        for (int i = damagedIndex; i < foodIndex; i++)
+        if (prince.transform.GetChild(1).gameObject.activeInHierarchy)
         {
-            Food _tempFood = foods[damagedIndex];
-            Remove(_tempFood);
+            int damagedIndex = foods.IndexOf(_food);
+
+            print(damagedIndex);
+
+            int foodIndex = foods.Count;
+
+            for (int i = damagedIndex; i < foodIndex; i++)
+            {
+                Food _tempFood = foods[damagedIndex];
+                Remove(_tempFood);
+            }
         }
     }
 

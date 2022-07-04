@@ -11,6 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/000/0 Scripts/Managers/SpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/000/0 Scripts/Spawn/Chip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/000/0 Scripts/Spawn/Donut.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/000/0 Scripts/Spawn/HotDog.cs" root0="FORCE_HIGHLIGHTING" />
@@ -85,7 +86,7 @@
       <workItem from="1656485886384" duration="26939000" />
       <workItem from="1656570371803" duration="20220000" />
       <workItem from="1656657026814" duration="21080000" />
-      <workItem from="1656916012540" duration="9024000" />
+      <workItem from="1656916012540" duration="10988000" />
     </task>
     <servers />
   </component>

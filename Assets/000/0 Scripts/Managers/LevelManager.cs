@@ -10,10 +10,7 @@ public class LevelManager : Singleton<LevelManager>
 
     [Header("Components")]
     [Space]
-    public List<GameObject> level1Prefabs;
-    public List<GameObject> level2Prefabs;
-    public List<GameObject> level3Prefabs;
-    public List<GameObject> previousLevelPrefabs;
+    public List<GameObject> levels;
 
     [Header("Settings")]
     [Space]
@@ -22,38 +19,60 @@ public class LevelManager : Singleton<LevelManager>
 
     private void Start()
     {
-        ActivateNextLevel(gameSettings);
+        ActivateStartLevel(gameSettings);
     }
-    public void ActivateNextLevel(GameSettings gameSettings)
+    public void ActivateStartLevel(GameSettings gameSettings)
     {
-        //activeLevel.SetActive(false);
+        if (gameSettings.hamburgerBuildingIndex == 0 || gameSettings.hamburgerBuildingIndex == 1)
+        {
+            activeLevel = levels[0];
+            activeLevel.SetActive(true);   
+        }
 
-        //switch (gameSettings.hamburgerBuildingIndex)
-        //{
-        //    case 0:
-        //        int ind0 = Random.Range(0, level1Prefabs.Count);
-        //        activeLevel = level1Prefabs[ind0];
-        //        break;
-        //    case 1:
-        //        int ind1 = Random.Range(0, level1Prefabs.Count);
-        //        activeLevel = level1Prefabs[ind1];
-        //        break;
-        //    case 2:
-        //        int ind2 = Random.Range(0, level2Prefabs.Count);
-        //        activeLevel = level2Prefabs[ind2];
-        //        break;
-        //    case 3:
-        //        int ind3 = Random.Range(0, level3Prefabs.Count);
-        //        activeLevel = level3Prefabs[ind3];
-        //        break;
-        //}
-        //activeLevel.SetActive(true);
-        int rand = Random.Range(0, level1Prefabs.Count);
-        level1Prefabs[rand].SetActive(true);
-        level1Prefabs.RemoveAt(rand);
+        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1)
+        {
+            activeLevel = levels[1];
+            activeLevel.SetActive(true);
+        }
+        
+        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
+            gameSettings.iceCreambuildingIndex == 1)
+        {
+            activeLevel = levels[2];
+            activeLevel.SetActive(true);
+        }
+        
+        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
+            gameSettings.iceCreambuildingIndex == 1 && gameSettings.donutbuildingIndex == 1)
+        {
+            activeLevel = levels[3];
+            activeLevel.SetActive(true);
+        }
+        
+        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
+            gameSettings.iceCreambuildingIndex == 1 && gameSettings.donutbuildingIndex == 1 &&
+            gameSettings.popcornbuildingIndex == 1)
+        {
+            activeLevel = levels[4];
+            activeLevel.SetActive(true);
+        }
+        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
+            gameSettings.iceCreambuildingIndex == 1 && gameSettings.donutbuildingIndex == 1 &&
+            gameSettings.popcornbuildingIndex == 1 && gameSettings.chipsbuildingIndex == 1)
+        {
+            activeLevel = levels[5];
+            activeLevel.SetActive(true);
+        }
+        
     }
-    public void ActivateNextInstanceLevel()
+    public void RandomLevel()
     {
-
+        activeLevel.SetActive(false);
+        if (gameSettings.hamburgerBuildingIndex > 1)
+        {
+            int rand = UnityEngine.Random.Range(0, levels.Count - 1);
+            activeLevel = levels[rand];
+            activeLevel.SetActive(true);
+        }
     }
 }
