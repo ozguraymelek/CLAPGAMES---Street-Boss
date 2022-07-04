@@ -12,6 +12,8 @@ public class LevelManager : Singleton<LevelManager>
     [Space]
     public List<GameObject> levels;
 
+    public List<GameObject> doors;
+
     [Header("Settings")]
     [Space]
     public int index;
@@ -65,14 +67,21 @@ public class LevelManager : Singleton<LevelManager>
         }
         
     }
+
     public void RandomLevel()
     {
-        activeLevel.SetActive(false);
-        if (gameSettings.hamburgerBuildingIndex > 1)
-        {
+       
+        if (gameSettings.hamburgerBuildingIndex > 1 && gameSettings.hotdogbuildingIndex > 1 &&
+            gameSettings.iceCreambuildingIndex > 1 && gameSettings.donutbuildingIndex > 1 &&
+            gameSettings.popcornbuildingIndex > 1 && gameSettings.chipsbuildingIndex > 1)
+        { 
+            activeLevel.SetActive(false);
             int rand = UnityEngine.Random.Range(0, levels.Count - 1);
             activeLevel = levels[rand];
-            activeLevel.SetActive(true);
+            foreach (GameObject door in doors)
+            {
+                door.SetActive(true);
+            }
         }
     }
 }
