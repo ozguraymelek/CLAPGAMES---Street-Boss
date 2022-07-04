@@ -21,12 +21,12 @@ public class UI_Manager : Singleton<UI_Manager>
 
     [Header("Food Info Components")] [Space] 
     
-    [SerializeField] internal Text hamburgerCountInfo;
-    [SerializeField] internal Text hotdogCountInfo;
-    [SerializeField] internal Text icecreamCountInfo;
-    [SerializeField] internal Text donutCountInfo;
-    [SerializeField] internal Text popcornCountInfo;
-    [SerializeField] internal Text chipCountInfo;
+    [SerializeField] internal TMP_Text hamburgerCountInfo;
+    [SerializeField] internal TMP_Text hotdogCountInfo;
+    [SerializeField] internal TMP_Text icecreamCountInfo;
+    [SerializeField] internal TMP_Text donutCountInfo;
+    [SerializeField] internal TMP_Text popcornCountInfo;
+    [SerializeField] internal TMP_Text chipCountInfo;
     
     [Header("Food Info Settings")][Space]
     [SerializeField] internal int hamburgerCount;
