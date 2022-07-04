@@ -20,6 +20,9 @@ public class HamburgerFoodArea : MonoBehaviour, IInteractable
 
     public void OnEnter()
     {
+        UI_Manager.Instance.hamburgerCount += hamburgerRef.countSpawnedHamburger;
+        UI_Manager.Instance.hamburgerCountInfo.text = UI_Manager.Instance.hamburgerCount.ToString();
+        
         IndexResetWithActivatorID();
         StandCountResetWithActivatorID();
     }

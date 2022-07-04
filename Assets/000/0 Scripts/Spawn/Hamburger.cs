@@ -84,7 +84,10 @@ public class Hamburger : MonoBehaviour
             instance.activeFood = instance.hamburgerTypes[0];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
-
+            
+            instance.boxCollider.center = new Vector3(0f, .5f, 0f);
+            instance.boxCollider.size = new Vector3(1f, .78f, 1f);
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -123,7 +126,10 @@ public class Hamburger : MonoBehaviour
             instance.activeFood = instance.hamburgerTypes[1];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
-
+            
+            instance.boxCollider.center = new Vector3(0f, .5f, 0f);
+            instance.boxCollider.size = new Vector3(.85f, .68f, .75f);
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -162,7 +168,10 @@ public class Hamburger : MonoBehaviour
             instance.activeFood = instance.hamburgerTypes[2];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
-
+            
+            instance.boxCollider.center = new Vector3(0f, .5f, 0f);
+            instance.boxCollider.size = new Vector3(.85f, .83f, .75f);
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             

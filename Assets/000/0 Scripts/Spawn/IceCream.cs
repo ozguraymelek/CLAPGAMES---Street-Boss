@@ -81,7 +81,10 @@ public class IceCream : MonoBehaviour
             instance.activeFood = instance.iceCreamTypes[0];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
-
+            
+            instance.boxCollider.center = new Vector3(0, .5f, 0f);
+            instance.boxCollider.size = new Vector3(.85f, 1.4f, .8f);
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -120,9 +123,11 @@ public class IceCream : MonoBehaviour
             
             instance.activeFood = instance.iceCreamTypes[1];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
-            
             instance.activeFood.SetActive(true);
-                
+            
+            instance.boxCollider.center = new Vector3(.25f, .5f, 0f);
+            instance.boxCollider.size = new Vector3(1.15f, 1.1f, .65f);
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -161,8 +166,10 @@ public class IceCream : MonoBehaviour
             
             instance.activeFood = instance.iceCreamTypes[2];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
-            
             instance.activeFood.SetActive(true);
+            
+            instance.boxCollider.center = new Vector3(0f, .5f, 0f);
+            instance.boxCollider.size = new Vector3(2f, 1.4f, 1.15f);
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);

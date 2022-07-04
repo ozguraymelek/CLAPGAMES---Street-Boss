@@ -11,6 +11,9 @@ public class ActivatorDesk : Singleton<ActivatorDesk>, IActivatorDesk
     public List<Transform> hamburgerFoodStackPoints;
     public List<Transform> hotDogFoodStackPoints;
     public List<Transform> iceCreamFoodStackPoints;
+    public List<Transform> chipFoodStackPoints;
+    public List<Transform> donutFoodStackPoints;
+    public List<Transform> popcornFoodStackPoints;
 
     void IActivatorDesk.OnEnter()
     {

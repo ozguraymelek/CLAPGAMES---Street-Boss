@@ -20,6 +20,9 @@ public class IceCreamFoodArea : MonoBehaviour ,IInteractable
 
     public void OnEnter()
     {
+        UI_Manager.Instance.icecreamCount += iceCreamRef.countSpawnedIceCream;
+        UI_Manager.Instance.icecreamCountInfo.text = UI_Manager.Instance.icecreamCount.ToString();
+        
         IndexResetWithActivatorID();
         StandCountResetWithActivatorID();
     }

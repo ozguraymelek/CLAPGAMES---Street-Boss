@@ -30,6 +30,10 @@ public class StackManager : Singleton<StackManager>
     public List<Transform> standHamburgerFoods;
     public List<Transform> standHotDogFoods;
     public List<Transform> standIceCreamFoods;
+    public List<Transform> standChipFoods;
+    public List<Transform> standDonutFoods;
+    public List<Transform> standPopcornFoods;
+
 
     public List<Food> stackedCurrentHamburgerObject;
 
@@ -61,6 +65,9 @@ public class StackManager : Singleton<StackManager>
     public int indexHamburgerDesk = 0;
     public int indexHotDogDesk = 0;
     public int indexIceCreamDesk = 0;
+    public int indexChipDesk = 0;
+    public int indexDonutDesk = 0;
+    public int indexPopcornDesk = 0;
     
     public enum FoodTypes
     {
@@ -254,8 +261,11 @@ public class StackManager : Singleton<StackManager>
                 _food.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
-        
-        UI_Manager.Instance.IncreaseFoodCountToUI(_food);
+
+        if (prince.transform.GetChild(1).gameObject.activeInHierarchy)
+        {
+            UI_Manager.Instance.IncreaseFoodCountToUI(_food);
+        }
     }
 
     public void Remove(Food _food)
@@ -402,7 +412,7 @@ public class StackManager : Singleton<StackManager>
         _food.transform.DOMove(_circlePositions[i], foodArriveTimeToCircle).OnComplete(() =>
         {
             _food.activeFood.transform.DOScale(.7f, 1f);
-            UI_Manager.Instance.DecreaseFoodCountToUI(_food);
+            // UI_Manager.Instance.DecreaseFoodCountToUI(_food);
             EffectManager.Instance.PopEffect(_food.transform.position + new Vector3(0, 0, -1), Quaternion.identity);
             SoundManager.Instance.RunnerToIdleStackSound(_food.transform.position);
         });
@@ -597,6 +607,48 @@ public class StackManager : Singleton<StackManager>
                 food.transform.parent = ActivatorDesk.Instance.iceCreamFoodStackPoints[indexIceCreamDesk++];
 
                 Activator(food, ActivatorDesk.Instance.iceCreamFoodStackPoints[indexIceCreamDesk]);
+
+                foods.Remove(foods[foods.Count - 1]);
+            }
+            
+            if (food.activeFood == food.chipsTypes[0] || food.activeFood == food.chipsTypes[1] ||
+                 food.activeFood == food.chipsTypes[2])
+            {
+                if (indexChipDesk >= ActivatorDesk.Instance.chipFoodStackPoints.Count - 1)
+                    indexChipDesk = 0;
+                
+                print("food is chip!" + " " + indexChipDesk);
+                food.transform.parent = ActivatorDesk.Instance.chipFoodStackPoints[indexChipDesk++];
+
+                Activator(food, ActivatorDesk.Instance.chipFoodStackPoints[indexChipDesk]);
+
+                foods.Remove(foods[foods.Count - 1]);
+            }
+            
+            if (food.activeFood == food.donutTypes[0] || food.activeFood == food.donutTypes[1] ||
+                food.activeFood == food.donutTypes[2])
+            {
+                if (indexDonutDesk >= ActivatorDesk.Instance.donutFoodStackPoints.Count - 1)
+                    indexDonutDesk = 0;
+                
+                print("food is donut!" + " " + indexDonutDesk);
+                food.transform.parent = ActivatorDesk.Instance.donutFoodStackPoints[indexDonutDesk++];
+
+                Activator(food, ActivatorDesk.Instance.donutFoodStackPoints[indexDonutDesk]);
+
+                foods.Remove(foods[foods.Count - 1]);
+            }
+            
+            if (food.activeFood == food.popcornTypes[0] || food.activeFood == food.popcornTypes[1] ||
+                food.activeFood == food.popcornTypes[2])
+            {
+                if (indexPopcornDesk >= ActivatorDesk.Instance.popcornFoodStackPoints.Count - 1)
+                    indexPopcornDesk = 0;
+                
+                print("food is popcorn!" + " " + indexPopcornDesk);
+                food.transform.parent = ActivatorDesk.Instance.popcornFoodStackPoints[indexPopcornDesk++];
+
+                Activator(food, ActivatorDesk.Instance.popcornFoodStackPoints[indexPopcornDesk]);
 
                 foods.Remove(foods[foods.Count - 1]);
             }

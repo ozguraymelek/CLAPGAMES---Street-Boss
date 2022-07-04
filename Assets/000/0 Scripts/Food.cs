@@ -18,6 +18,9 @@ public class Food : MonoBehaviour, IStackable
     [SerializeField] internal GameObject[] popcornTypes;
     [SerializeField] internal GameObject[] chipsTypes;
 
+    [Header("Components Property")] [SerializeField]
+    internal BoxCollider boxCollider;
+    
     public GameObject activeFood;
 
     [Header("Settings")]

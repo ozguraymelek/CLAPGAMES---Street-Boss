@@ -20,6 +20,9 @@ public class HotDogFoodArea : MonoBehaviour, IInteractable
 
     public void OnEnter()
     {
+        UI_Manager.Instance.hotdogCount += hotDogRef.countSpawnedHotDog;
+        UI_Manager.Instance.hotdogCountInfo.text = UI_Manager.Instance.hotdogCount.ToString();
+        
         IndexResetWithActivatorID();
         StandCountResetWithActivatorID();
     }

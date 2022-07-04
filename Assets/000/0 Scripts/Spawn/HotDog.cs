@@ -84,6 +84,9 @@ public class HotDog : MonoBehaviour
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
             
+            instance.boxCollider.center = new Vector3(0f, .67f, 0f);
+            instance.boxCollider.size = new Vector3(1.45f, .75f, .75f);
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, .465f, 0f);
             
@@ -123,7 +126,10 @@ public class HotDog : MonoBehaviour
             instance.activeFood = instance.hotDogTypes[1];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
-                
+            
+            instance.boxCollider.center = new Vector3(0f, .67f, 0f);
+            instance.boxCollider.size = new Vector3(1.45f, .75f, .75f);
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -163,6 +169,9 @@ public class HotDog : MonoBehaviour
             instance.activeFood = instance.hotDogTypes[2];
             instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
             instance.activeFood.SetActive(true);
+            
+            instance.boxCollider.center = new Vector3(0f, .67f, 0f);
+            instance.boxCollider.size = new Vector3(1.45f, .75f, .75f);
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
