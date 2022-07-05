@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Game Settings
   m_EditorClassIdentifier: 
   speed: 400
-  rotationSpeed: 7
+  rotationSpeed: 9
   cameraTrasitionTime: 1.5
-  hamburgerBuildingIndex: 1
+  hamburgerBuildingIndex: 0
   hotdogbuildingIndex: 0
   iceCreambuildingIndex: 0
-  chipsbuildingIndex: 1
-  donutbuildingIndex: 1
-  popcornbuildingIndex: 1
+  chipsbuildingIndex: 0
+  donutbuildingIndex: 0
+  popcornbuildingIndex: 0
   hamburgerPrizeLVL0: 5
   hamburgerPrizeLVL1: 7
   hamburgerPrizeLVL2: 9
@@ -29,22 +29,22 @@ MonoBehaviour:
   hotDogPrizeLVL2: 9
   hotDogPrizeLVL3: 11
   hotDogPrizeLVL1: 13
-  iceCreamPrizeLVL0: 15
-  iceCreamPrizeLVL1: 17
-  iceCreamPrizeLVL2: 19
-  iceCreamPrizeLVL3: 21
-  donutPrizeLVL0: 9
-  donutPrizeLVL1: 0
-  donutPrizeLVL2: 0
-  donutPrizeLVL3: 0
+  iceCreamPrizeLVL0: 9
+  iceCreamPrizeLVL1: 11
+  iceCreamPrizeLVL2: 13
+  iceCreamPrizeLVL3: 15
+  donutPrizeLVL0: 11
+  donutPrizeLVL1: 13
+  donutPrizeLVL2: 15
+  donutPrizeLVL3: 17
   popcornPrizeLVL0: 13
-  popcornPrizeLVL1: 0
-  popcornPrizeLVL2: 0
-  popcornPrizeLVL3: 0
+  popcornPrizeLVL1: 15
+  popcornPrizeLVL2: 17
+  popcornPrizeLVL3: 19
   chipPrizeLVL0: 15
-  chipPrizeLVL1: 0
-  chipPrizeLVL2: 0
-  chipPrizeLVL3: 0
+  chipPrizeLVL1: 17
+  chipPrizeLVL2: 19
+  chipPrizeLVL3: 21
   hamburgerMeshLevel1: {fileID: 0}
   hamburgerMeshLevel2: {fileID: 0}
   hamburgerMeshLevel3: {fileID: 0}

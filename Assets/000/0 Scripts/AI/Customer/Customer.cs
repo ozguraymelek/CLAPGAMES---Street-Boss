@@ -13,6 +13,8 @@ public class Customer : MonoBehaviour, ICustomer
     [Header("Settings")]
     [Space]
     public List<Transform> pathway;
+
+    [SerializeField] internal Transform canvas;
     [SerializeField] internal GameObject happyIcon;
     [SerializeField] internal GameObject angryIcon;
     [SerializeField] internal List<GameObject> iconsHolder;
@@ -20,6 +22,7 @@ public class Customer : MonoBehaviour, ICustomer
 
     private void Start()
     {
+        
         pathway[0] = GameObject.FindWithTag("F*").transform;
         pathway[1] = GameObject.FindWithTag("S*").transform;
         pathway[2] = GameObject.FindWithTag("Desk").transform;
@@ -33,6 +36,8 @@ public class Customer : MonoBehaviour, ICustomer
     private void Update()
     {
         Check();
+        
+        canvas.rotation = Camera.main.transform.rotation;
     }
 
     public void Check()

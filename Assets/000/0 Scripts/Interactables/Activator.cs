@@ -8,6 +8,7 @@ public class Activator : MonoBehaviour, IInteractable
     private float _stayedTime;
     [SerializeField] List<GameObject> _levels = new List<GameObject>();
     [SerializeField] int[] prices = { 5, 10, 15, 20 };
+    [SerializeField] private int[] pricesToText;
     public int levelIndex = 0;
     //protected int levelBound = 0;
     public int activatorId;
@@ -77,7 +78,7 @@ public class Activator : MonoBehaviour, IInteractable
     {
         Color textColor;
         if (levelIndex != prices.Length)
-            remainingMoneyTMP.text = (prices[levelIndex] - spendedDeck).ToString();
+            remainingMoneyTMP.text = (pricesToText[levelIndex] - (spendedDeck*10)).ToString();
         else
         {
             textColor = new Color(0b_1, 0b0, 0b0, 0b1);

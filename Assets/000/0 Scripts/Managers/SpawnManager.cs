@@ -5,10 +5,11 @@ using EZ_Pooling;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
-    [SerializeField] private Transform doors;
+    [SerializeField] private List<GameObject> levels;
 
-    public void SpawnDoors(Vector3 pos, Quaternion rot)
+    public Transform SpawnLevels(Vector3 pos, Quaternion rot,int index)
     {
-        Transform instance = EZ_PoolManager.Spawn(doors, pos, rot);
+        Transform instance = Instantiate(levels[index].transform, pos, rot);
+        return instance;
     }
 }

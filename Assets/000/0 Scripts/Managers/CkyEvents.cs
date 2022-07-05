@@ -58,7 +58,7 @@ public class CkyEvents : MonoBehaviour
         OnTransToRunner?.Invoke();
     }
 
-    public void OnTransitionToIdle()
+    public void  OnTransitionToIdle()
     {
         OnTransToIdle?.Invoke();
     }

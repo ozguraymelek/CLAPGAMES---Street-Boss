@@ -72,18 +72,18 @@ public class IceCream : MonoBehaviour
         countSpawnedIceCream++;
     }
 
-    private void Level1(Food food1)
+    private void Level1(Food food)
     {
         if (transform.GetChild(1).gameObject.activeInHierarchy)
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.iceCreamTypes[0];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
-            instance.boxCollider.size = new Vector3(.85f, 1.4f, .8f);
+            instance.boxCollider.size = new Vector3(.7f, 1.2f, .7f);
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -97,36 +97,39 @@ public class IceCream : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandIceCream != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
 
-    private void Level2(Food food1)
+    private void Level2(Food food)
     {
         if (transform.GetChild(2).gameObject.activeInHierarchy)
         {
-            Food instance = Instantiate(food, transform.position, quaternion.identity);
+            Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.iceCreamTypes[1];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
-            instance.boxCollider.center = new Vector3(.25f, .5f, 0f);
-            instance.boxCollider.size = new Vector3(1.15f, 1.1f, .65f);
+            instance.boxCollider.center = new Vector3(.17f, .5f, -.025f);
+            instance.boxCollider.size = new Vector3(1.05f, 1.18f, .74f);
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -140,36 +143,39 @@ public class IceCream : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandIceCream != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
 
-    private void Level3(Food food1)
+    private void Level3(Food food)
     {
         if (transform.GetChild(3).gameObject.activeInHierarchy)
         {
-            Food instance = Instantiate(food, transform.position, quaternion.identity);
+            Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.iceCreamTypes[2];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
-            instance.boxCollider.center = new Vector3(0f, .5f, 0f);
-            instance.boxCollider.size = new Vector3(2f, 1.4f, 1.15f);
+            instance.boxCollider.center = new Vector3(0f, .5f, -.1f);
+            instance.boxCollider.size = new Vector3(1.7f, 1.4f, 1f);
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -183,21 +189,24 @@ public class IceCream : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandIceCream != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
     

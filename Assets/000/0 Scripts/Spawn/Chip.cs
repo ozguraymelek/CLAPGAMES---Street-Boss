@@ -78,11 +78,11 @@ public class Chip : MonoBehaviour
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.chipsTypes[0];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
 
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
-            instance.boxCollider.size = new Vector3(.5f, .18f, 1f);
+            instance.boxCollider.size = new Vector3(.24f, .16f, .6f);
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -96,21 +96,24 @@ public class Chip : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandChip != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandChip].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandChip].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
     private void Level2(Food food)
@@ -120,11 +123,11 @@ public class Chip : MonoBehaviour
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.chipsTypes[1];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
-            instance.boxCollider.center = new Vector3(0, .5f, 0f);
-            instance.boxCollider.size = new Vector3(1.35f, 1.5f, .5f);
+            instance.boxCollider.center = new Vector3(-.009f, .5f, -.09f);
+            instance.boxCollider.size = new Vector3(.8f, .8f, .28f);
                 
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -138,21 +141,24 @@ public class Chip : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandChip != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandChip].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandChip].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
     private void Level3(Food food)
@@ -162,11 +168,11 @@ public class Chip : MonoBehaviour
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.chipsTypes[2];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
-            instance.boxCollider.center = new Vector3(0, .5f, 0f);
-            instance.boxCollider.size = new Vector3(1f, .85f, .5f);
+            instance.boxCollider.center = new Vector3(-.009f, .5f, -.09f);
+            instance.boxCollider.size = new Vector3(.8f, .8f, .28f);
 
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -180,21 +186,24 @@ public class Chip : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandChip != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandChip].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandChip].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
     

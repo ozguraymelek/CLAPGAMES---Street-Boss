@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using EZ_Pooling;
 using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
@@ -17,7 +18,7 @@ public class LevelManager : Singleton<LevelManager>
     [Header("Settings")]
     [Space]
     public int index;
-    public GameObject activeLevel;
+    public Transform activeLevel;
 
     private void Start()
     {
@@ -25,47 +26,55 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void ActivateStartLevel(GameSettings gameSettings)
     {
-        if (gameSettings.hamburgerBuildingIndex == 0 || gameSettings.hamburgerBuildingIndex == 1)
+        if (gameSettings.hamburgerBuildingIndex == 0 && gameSettings.hotdogbuildingIndex == 0 &&
+         gameSettings.iceCreambuildingIndex == 0 && gameSettings.donutbuildingIndex == 0 &&
+         gameSettings.popcornbuildingIndex == 0 && gameSettings.chipsbuildingIndex == 0)
         {
-            activeLevel = levels[0];
-            activeLevel.SetActive(true);   
+            activeLevel = SpawnManager.Instance.SpawnLevels(Vector3.zero, Quaternion.identity, 0);
         }
-
-        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1)
+        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 0 &&
+            gameSettings.iceCreambuildingIndex == 0 && gameSettings.donutbuildingIndex == 0 &&
+            gameSettings.popcornbuildingIndex == 0 && gameSettings.chipsbuildingIndex == 0)
         {
-            activeLevel = levels[1];
-            activeLevel.SetActive(true);
+            activeLevel = SpawnManager.Instance.SpawnLevels(Vector3.zero, Quaternion.identity, 0);
+        }
+        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
+            gameSettings.iceCreambuildingIndex == 0 && gameSettings.donutbuildingIndex == 0 &&
+            gameSettings.popcornbuildingIndex == 0 && gameSettings.chipsbuildingIndex == 0)
+        {
+            activeLevel = SpawnManager.Instance.SpawnLevels(Vector3.zero, Quaternion.identity, 1);
         }
         
         else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
-            gameSettings.iceCreambuildingIndex == 1)
+            gameSettings.iceCreambuildingIndex == 1 && gameSettings.donutbuildingIndex == 0 &&
+            gameSettings.popcornbuildingIndex == 0 && gameSettings.chipsbuildingIndex == 0)
         {
-            activeLevel = levels[2];
-            activeLevel.SetActive(true);
-        }
-        
-        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
-            gameSettings.iceCreambuildingIndex == 1 && gameSettings.donutbuildingIndex == 1)
-        {
-            activeLevel = levels[3];
-            activeLevel.SetActive(true);
+            activeLevel = SpawnManager.Instance.SpawnLevels(Vector3.zero, Quaternion.identity, 2);
         }
         
         else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
             gameSettings.iceCreambuildingIndex == 1 && gameSettings.donutbuildingIndex == 1 &&
-            gameSettings.popcornbuildingIndex == 1)
+            gameSettings.popcornbuildingIndex == 0 && gameSettings.chipsbuildingIndex ==0)
         {
-            activeLevel = levels[4];
-            activeLevel.SetActive(true);
-        }
-        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
-            gameSettings.iceCreambuildingIndex == 1 && gameSettings.donutbuildingIndex == 1 &&
-            gameSettings.popcornbuildingIndex == 1 && gameSettings.chipsbuildingIndex == 1)
-        {
-            activeLevel = levels[5];
-            activeLevel.SetActive(true);
+            activeLevel = SpawnManager.Instance.SpawnLevels(Vector3.zero, Quaternion.identity, 3);
         }
         
+        else if (gameSettings.hamburgerBuildingIndex == 1 && gameSettings.hotdogbuildingIndex == 1 &&
+            gameSettings.iceCreambuildingIndex == 1 && gameSettings.donutbuildingIndex == 1 &&
+            gameSettings.popcornbuildingIndex == 1 && gameSettings.chipsbuildingIndex == 0)
+        {
+            activeLevel = SpawnManager.Instance.SpawnLevels(Vector3.zero, Quaternion.identity, 4);
+        }
+        else if (gameSettings.hamburgerBuildingIndex >= 1 && gameSettings.hotdogbuildingIndex >= 1 &&
+            gameSettings.iceCreambuildingIndex >= 1 && gameSettings.donutbuildingIndex >= 1 &&
+            gameSettings.popcornbuildingIndex >= 1 && gameSettings.chipsbuildingIndex >= 1)
+        {
+            activeLevel = SpawnManager.Instance.SpawnLevels(Vector3.zero, Quaternion.identity, 5);
+        }
+        else
+        {
+            activeLevel = SpawnManager.Instance.SpawnLevels(Vector3.zero, Quaternion.identity, 0);
+        }
     }
 
     public void RandomLevel()
@@ -74,14 +83,10 @@ public class LevelManager : Singleton<LevelManager>
         if (gameSettings.hamburgerBuildingIndex > 1 && gameSettings.hotdogbuildingIndex > 1 &&
             gameSettings.iceCreambuildingIndex > 1 && gameSettings.donutbuildingIndex > 1 &&
             gameSettings.popcornbuildingIndex > 1 && gameSettings.chipsbuildingIndex > 1)
-        { 
-            activeLevel.SetActive(false);
-            int rand = UnityEngine.Random.Range(0, levels.Count - 1);
-            activeLevel = levels[rand];
-            foreach (GameObject door in doors)
-            {
-                door.SetActive(true);
-            }
-        }
+        {
+            GameObject door = GameObject.FindGameObjectWithTag("Door");
+            door.SetActive(true);
+        }else
+            return;
     }
 }

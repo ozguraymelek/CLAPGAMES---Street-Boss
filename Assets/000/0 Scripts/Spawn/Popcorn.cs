@@ -78,7 +78,7 @@ public class Popcorn : MonoBehaviour
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.popcornTypes[0];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
@@ -96,21 +96,24 @@ public class Popcorn : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandPopcorn != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandPopcorn].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandPopcorn].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
     private void Level2(Food food)
@@ -120,7 +123,7 @@ public class Popcorn : MonoBehaviour
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.donutTypes[1];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
@@ -138,21 +141,24 @@ public class Popcorn : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandPopcorn != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandPopcorn].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandPopcorn].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
     private void Level3(Food food)
@@ -162,7 +168,7 @@ public class Popcorn : MonoBehaviour
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.popcornTypes[2];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
@@ -180,21 +186,24 @@ public class Popcorn : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandPopcorn != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandPopcorn].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandPopcorn].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
     

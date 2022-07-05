@@ -17,11 +17,15 @@ public class IdleTrigger : MonoBehaviour
     {
         IStackable _stackable = other.GetComponent<IStackable>();
 
+        if(other.GetComponent<Prince>()!=null)
+            StackManager.Instance.InteractHand();
+        
         if (_stackable == null) return;
 
         if (other.GetComponent<Food>().isOnList == false) return;
 
         StackManager.Instance.FoodMovesToCircle(other.GetComponent<Food>());
+        
     }
 
     private void OnTransToRunner()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EZ_Pooling;
 using UnityEngine;
 
 public class RunnerTrigger : MonoBehaviour, IInteractable
@@ -15,6 +16,7 @@ public class RunnerTrigger : MonoBehaviour, IInteractable
     void IInteractable.OnEnter()
     {
         FindObjectOfType<CkyEvents>().OnTransitionToRunner();
+        Destroy(LevelManager.Instance.activeLevel.gameObject);
         LevelManager.Instance.ActivateStartLevel(gameSettings);
         LevelManager.Instance.RandomLevel();
     }

@@ -29,6 +29,7 @@ public class Food : MonoBehaviour, IStackable
 
     private void Start()
     {
+        boxCollider = GetComponent<BoxCollider>();
         _rb = GetComponent<Rigidbody>();
         _coll = GetComponent<BoxCollider>();
         _prince = FindObjectOfType<Prince>();

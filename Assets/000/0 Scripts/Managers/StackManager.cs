@@ -68,7 +68,8 @@ public class StackManager : Singleton<StackManager>
     public int indexChipDesk = 0;
     public int indexDonutDesk = 0;
     public int indexPopcornDesk = 0;
-    
+
+    public float moneyThrowDuration;
     public enum FoodTypes
     {
         Hamburger,
@@ -260,6 +261,8 @@ public class StackManager : Singleton<StackManager>
                 collectedIceCreams.Add(_food.transform);
                 _food.GetComponent<Rigidbody>().isKinematic = true;
             }
+
+            foods[0].transform.localEulerAngles = Vector3.zero;
         }
 
         if (prince.transform.GetChild(1).gameObject.activeInHierarchy)
@@ -362,6 +365,11 @@ public class StackManager : Singleton<StackManager>
 
     public void FoodMovesToCircle(Food _food)
     {
+        if (foods.Count == 0)
+        {
+            return;
+        }
+        
         if (_food.activeFood == _food.hamburgerTypes[0] || _food.activeFood == _food.hamburgerTypes[1] || _food.activeFood == _food.hamburgerTypes[2])
         {
             collectedHamburgers.Add(_food.transform);
@@ -414,13 +422,91 @@ public class StackManager : Singleton<StackManager>
 
         _food.transform.DOMove(_circlePositions[i], foodArriveTimeToCircle).OnComplete(() =>
         {
-            _food.activeFood.transform.DOScale(.7f, 1f);
+            _food.activeFood.transform.DOScale(.6f, 1f);
+            
+            
+            SetBoxCollider(_food);
+            
             // UI_Manager.Instance.DecreaseFoodCountToUI(_food);
             EffectManager.Instance.PopEffect(_food.transform.position + new Vector3(0, 0, -1), Quaternion.identity);
             SoundManager.Instance.RunnerToIdleStackSound(_food.transform.position);
         });
     }
 
+    void SetBoxCollider(Food _food)
+    {
+        print("girdi");
+        if (_food.activeFood == _food.hamburgerTypes[0] || _food.activeFood == _food.hamburgerTypes[1] ||
+         _food.activeFood == _food.hamburgerTypes[2])
+        {
+            _food.boxCollider.center = new Vector3(0f, .5f, 0f);
+            _food.boxCollider.size = new Vector3(.85f, .65f, .86f);
+        }
+        
+        if (_food.activeFood == _food.hotDogTypes[0] || _food.activeFood == _food.hotDogTypes[1] ||
+            _food.activeFood == _food.hotDogTypes[2])
+        {
+            _food.boxCollider.center = new Vector3(.04f, .635f, 0f);
+            _food.boxCollider.size = new Vector3(1.15f, .55f, .67f);
+        }
+        
+        if (_food.activeFood == _food.iceCreamTypes[0])
+        {
+            _food.boxCollider.center = new Vector3(0, .5f, 0f);
+            _food.boxCollider.size = new Vector3(.7f, 1.2f, .7f);
+        }
+        if (_food.activeFood == _food.iceCreamTypes[1])
+        {
+            _food.boxCollider.center = new Vector3(.17f, .5f, -.025f);
+            _food.boxCollider.size = new Vector3(1.05f, 1.18f, .74f);
+        }
+        if (_food.activeFood == _food.iceCreamTypes[2])
+        {
+            _food.boxCollider.center = new Vector3(0f, .5f, -.1f);
+            _food.boxCollider.size = new Vector3(1.7f, 1.4f, 1f);
+        }
+
+        if (_food.activeFood == _food.donutTypes[0] || _food.activeFood == _food.donutTypes[1] ||
+            _food.activeFood == _food.donutTypes[2])
+        {
+            _food.boxCollider.center = new Vector3(0, .5f, 0f);
+            _food.boxCollider.size = new Vector3(.96f, .3f, .96f);
+        }
+        
+        if (_food.activeFood == _food.chipsTypes[0])
+        {
+            _food.boxCollider.center = new Vector3(0, .5f, 0f);
+            _food.boxCollider.size = new Vector3(.24f, .16f, .6f);
+        }
+        if (_food.activeFood == _food.chipsTypes[1])
+        {
+            _food.boxCollider.center = new Vector3(-.009f, .5f, -.09f);
+            _food.boxCollider.size = new Vector3(.8f, .8f, .28f);
+        }
+        if (_food.activeFood == _food.chipsTypes[2])
+        {
+            _food.boxCollider.center = new Vector3(-.009f, .5f, -.09f);
+            _food.boxCollider.size = new Vector3(.8f, .8f, .28f);
+        }
+        
+        if (_food.activeFood == _food.popcornTypes[0] || _food.activeFood == _food.popcornTypes[1] ||
+            _food.activeFood == _food.popcornTypes[2])
+        {
+            _food.boxCollider.center = new Vector3(0, .5f, 0f);
+            _food.boxCollider.size = new Vector3(.9f, .9f, .85f);
+        }
+
+        
+    }
+    public void InteractHand()
+    {
+        print("TTSSDA");
+        if (foods.Count == 0)
+        {
+            FindObjectOfType<CkyEvents>().OnTransitionToIdle();
+            FindObjectOfType<IdleTrigger>().EnableColliderTrigger(false);
+        }
+    }
     public void FindPositionsInCircle()
     {
         Vector3 _pos = foods[foods.Count - 1].transform.position;
@@ -489,7 +575,7 @@ public class StackManager : Singleton<StackManager>
             foods[i].transform.rotation = Quaternion.Lerp(foods[i].transform.rotation, foods[i - 1].transform.rotation,
                 lerpSpeedForIdle * Time.deltaTime);
             //foods[i].transform.position = Vector3.Lerp(foods[i].transform.position, targetPos, (lerpSpeedForIdle - i * lerpSpeedForIdle / 40) * Time.deltaTime);
-            //StartCoroutine(UpdatePositionsForIdleEffect(i, targetPos));
+            // StartCoroutine(UpdatePositionsForIdleEffect(i, targetPos));
         }
     }
 
@@ -502,7 +588,7 @@ public class StackManager : Singleton<StackManager>
             if (IsArrivedToTheFirstPosition(foods[i].transform.position, targetPos))
             {
                 print("1.1111");
-                EffectManager.Instance.PopEffect(targetPos, Quaternion.identity);
+                // EffectManager.Instance.PopEffect(targetPos, Quaternion.identity);
                 isArrived = true;
                 print("1.2222");
             }
@@ -547,7 +633,7 @@ public class StackManager : Singleton<StackManager>
         var randomY = Random.Range(-diss, diss);
         var randomPos = new Vector3(randomX, 0, randomY);
 
-        objTr.DOJump(targetTr.position + randomPos, 6.0f, 1, .8f).OnComplete(
+        objTr.DOJump(targetTr.position + randomPos, 6.0f, 1, moneyThrowDuration).OnComplete(
             () =>
             {
                 print("TTT");
@@ -760,6 +846,7 @@ public class StackManager : Singleton<StackManager>
     #region Activator - Customer
 
     public bool canSale = false;
+    [SerializeField] private float decreaseIdle;
 
     public void GetAllFoods(Customer targetTr, ActivatorMoney activatorMoney, GameSettings gameSettings)
     {
@@ -779,7 +866,7 @@ public class StackManager : Singleton<StackManager>
         objectsOnDesk[objectsOnDesk.Count - 1].GetComponent<BoxCollider>().enabled = false;
         
         objectsOnDesk[objectsOnDesk.Count - 1].transform.parent = customer.transform;
-        objectsOnDesk[objectsOnDesk.Count - 1].transform.localPosition = new Vector3(-.008f, 1f, .589f);
+        objectsOnDesk[objectsOnDesk.Count - 1].transform.localPosition = new Vector3(0f, .7f, .418f);
         objectsOnDesk[objectsOnDesk.Count - 1].transform.eulerAngles = new Vector3(0f, 163.967f, 0f);
         //objectsOnDesk[objectsOnDesk.Count - 1].DOScale(.5f, 1f); 
 

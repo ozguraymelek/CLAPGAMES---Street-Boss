@@ -18,6 +18,7 @@ TagManager:
   - S*
   - Desk
   - FinishPoint
+  - Door
   layers:
   - Default
   - TransparentFX

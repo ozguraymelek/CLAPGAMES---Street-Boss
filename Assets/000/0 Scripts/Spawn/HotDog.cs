@@ -81,11 +81,11 @@ public class HotDog : MonoBehaviour
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.hotDogTypes[0];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
-            instance.boxCollider.center = new Vector3(0f, .67f, 0f);
-            instance.boxCollider.size = new Vector3(1.45f, .75f, .75f);
+            instance.boxCollider.center = new Vector3(.04f, .635f, 0f);
+            instance.boxCollider.size = new Vector3(1.15f, .55f, .67f);
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, .465f, 0f);
@@ -99,21 +99,27 @@ public class HotDog : MonoBehaviour
                 activeLevelTr.localScale = Vector3.one;
             }
             
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+            if (foodAreaRef.indexStandHotDog != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
+
             
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+            
         }
     }
     
@@ -124,11 +130,11 @@ public class HotDog : MonoBehaviour
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.hotDogTypes[1];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
-            instance.boxCollider.center = new Vector3(0f, .67f, 0f);
-            instance.boxCollider.size = new Vector3(1.45f, .75f, .75f);
+            instance.boxCollider.center = new Vector3(.04f, .635f, 0f);
+            instance.boxCollider.size = new Vector3(1.15f, .55f, .67f);
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -141,22 +147,25 @@ public class HotDog : MonoBehaviour
             {
                 activeLevelTr.localScale = Vector3.one;
             }
-            
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+
+            if (foodAreaRef.indexStandHotDog != foodAreaRef.standPoints.Count)
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
             
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
     
@@ -167,11 +176,11 @@ public class HotDog : MonoBehaviour
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
             instance.activeFood = instance.hotDogTypes[2];
-            instance.activeFood.transform.localScale = new Vector3(.7f, .7f, .7f);
+            instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
-            instance.boxCollider.center = new Vector3(0f, .67f, 0f);
-            instance.boxCollider.size = new Vector3(1.45f, .75f, .75f);
+            instance.boxCollider.center = new Vector3(.04f, .635f, 0f);
+            instance.boxCollider.size = new Vector3(1.15f, .55f, .67f);
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -184,22 +193,25 @@ public class HotDog : MonoBehaviour
             {
                 activeLevelTr.localScale = Vector3.one;
             }
-            
-            activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
-                .OnComplete(() =>
-                {
-                    if (canProduce == false)
+
+            if (foodAreaRef.indexStandHotDog != foodAreaRef.standPoints.Count) 
+            {
+                activeLevelTr.DOPunchScale(new Vector3(.1f,.1f,.1f), shakeDuration)
+                    .OnComplete(() =>
                     {
-                        activeLevelTr.DOScale(1f, shakeDuration);
-                    }
-                });
-            
-            instance.transform
-                .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
-                    {
-                        Completed(instance.transform);
-                    }
-                );
+                        if (canProduce == false)
+                        {
+                            activeLevelTr.DOScale(1f, shakeDuration);
+                        }
+                    });
+                
+                instance.transform
+                    .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
+                        {
+                            Completed(instance.transform);
+                        }
+                    );
+            }
         }
     }
     
