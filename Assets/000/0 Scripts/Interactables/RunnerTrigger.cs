@@ -17,6 +17,7 @@ public class RunnerTrigger : MonoBehaviour, IInteractable
     {
         FindObjectOfType<CkyEvents>().OnTransitionToRunner();
         Destroy(LevelManager.Instance.activeLevel.gameObject);
+        StackManager.Instance.SetScaleIdleToRunner();
         LevelManager.Instance.ActivateStartLevel(gameSettings);
         LevelManager.Instance.RandomLevel();
     }

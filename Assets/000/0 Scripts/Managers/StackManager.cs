@@ -241,6 +241,9 @@ public class StackManager : Singleton<StackManager>
 
         if (prince.transform.GetChild(0).gameObject.activeInHierarchy)
         {
+            if(_food != foods[0])
+                _food.transform.parent = null;
+            
             if (_food.activeFood == _food.hamburgerTypes[0] ||_food.activeFood == _food.hamburgerTypes[1] || 
                 _food.activeFood == _food.hamburgerTypes[2])
             {
@@ -271,6 +274,13 @@ public class StackManager : Singleton<StackManager>
         }
     }
 
+    public void SetScaleIdleToRunner()
+    {
+        foreach (var food in foods)
+        {
+            food.activeFood.transform.DOScale(1f, .7f);
+        }
+    }
     public void Remove(Food _food)
     {
         if (foods.Count == 1)
