@@ -84,6 +84,8 @@ public class Popcorn : MonoBehaviour
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
             instance.boxCollider.size = new Vector3(.9f, .9f, .85f);
             
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -110,6 +112,7 @@ public class Popcorn : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandPopcorn].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -122,13 +125,15 @@ public class Popcorn : MonoBehaviour
         {
             Food instance = Instantiate(food, transform.position, Quaternion.identity);
             
-            instance.activeFood = instance.donutTypes[1];
+            instance.activeFood = instance.popcornTypes[1];
             instance.activeFood.transform.localScale = new Vector3(.6f, .6f, .6f);
             instance.activeFood.SetActive(true);
             
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
             instance.boxCollider.size = new Vector3(.9f, .9f, .85f);
-
+            
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -155,6 +160,7 @@ public class Popcorn : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandPopcorn].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -173,7 +179,9 @@ public class Popcorn : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
             instance.boxCollider.size = new Vector3(.9f, .9f, .85f);
-
+            
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -200,6 +208,7 @@ public class Popcorn : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandPopcorn].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );

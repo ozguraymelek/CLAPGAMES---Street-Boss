@@ -322,8 +322,10 @@ public class StackManager : Singleton<StackManager>
             for (int i = damagedIndex; i < foodIndex; i++)
             {
                 Food _tempFood = foods[damagedIndex];
+                UI_Manager.Instance.DecreaseFoodCountToUI(_tempFood);
                 Remove(_tempFood);
             }
+            
         }
     }
 

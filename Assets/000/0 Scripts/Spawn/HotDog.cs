@@ -87,6 +87,8 @@ public class HotDog : MonoBehaviour
             instance.boxCollider.center = new Vector3(.04f, .635f, 0f);
             instance.boxCollider.size = new Vector3(1.15f, .55f, .67f);
             
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, .465f, 0f);
             
@@ -113,6 +115,7 @@ public class HotDog : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -135,6 +138,8 @@ public class HotDog : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(.04f, .635f, 0f);
             instance.boxCollider.size = new Vector3(1.15f, .55f, .67f);
+            
+            instance.boxCollider.enabled = false;
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -162,6 +167,7 @@ public class HotDog : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -181,6 +187,8 @@ public class HotDog : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(.04f, .635f, 0f);
             instance.boxCollider.size = new Vector3(1.15f, .55f, .67f);
+            
+            instance.boxCollider.enabled = false;
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -208,6 +216,7 @@ public class HotDog : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHotDog].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );

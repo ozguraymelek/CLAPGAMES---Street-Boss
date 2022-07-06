@@ -85,6 +85,8 @@ public class IceCream : MonoBehaviour
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
             instance.boxCollider.size = new Vector3(.7f, 1.2f, .7f);
             
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -111,6 +113,7 @@ public class IceCream : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -130,6 +133,8 @@ public class IceCream : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(.17f, .5f, -.025f);
             instance.boxCollider.size = new Vector3(1.05f, 1.18f, .74f);
+            
+            instance.boxCollider.enabled = false;
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -157,6 +162,7 @@ public class IceCream : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -176,6 +182,8 @@ public class IceCream : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(0f, .5f, -.1f);
             instance.boxCollider.size = new Vector3(1.7f, 1.4f, 1f);
+            
+            instance.boxCollider.enabled = false;
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -203,6 +211,7 @@ public class IceCream : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandIceCream].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );

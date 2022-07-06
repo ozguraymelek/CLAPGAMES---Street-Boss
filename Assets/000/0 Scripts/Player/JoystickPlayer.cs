@@ -1,4 +1,5 @@
-﻿using EZ_Pooling;
+﻿using DG.Tweening;
+using EZ_Pooling;
 using UnityEngine;
 
 public class JoystickPlayer : Singleton<JoystickPlayer>
@@ -17,6 +18,11 @@ public class JoystickPlayer : Singleton<JoystickPlayer>
     [SerializeField] internal Transform playerMoneyParentTr;
 
     [SerializeField] internal Transform dollarPrefab;
+
+    [Header("Components Particle")] [SerializeField]
+    private GameObject vfxSmoke;
+
+    [SerializeField] private float vfxDuration;
     private void Start()
     {
         GetComponents();
@@ -80,13 +86,14 @@ public class JoystickPlayer : Singleton<JoystickPlayer>
         {
             Quaternion rotGoal = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, rotationSpeed * Time.deltaTime);
-
+            vfxSmoke.transform.DOScale(.5f, vfxDuration);
             AnimationController.SetFloat(anim, "Direction", direction.magnitude);
             rb.velocity = transform.GetChild(0).forward * speed * Time.fixedDeltaTime;
             _velocity = rb.velocity;
         }
         else
         {
+            vfxSmoke.transform.localScale = Vector3.zero;
             rb.velocity = Vector3.zero;
             _velocity = rb.velocity;
             AnimationController.SetFloat(anim, "Direction", direction.magnitude);

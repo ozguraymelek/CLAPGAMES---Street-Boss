@@ -88,6 +88,8 @@ public class Hamburger : MonoBehaviour
             instance.boxCollider.center = new Vector3(0f, .5f, 0f);
             instance.boxCollider.size = new Vector3(.85f, .65f, .86f);
             
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -114,6 +116,7 @@ public class Hamburger : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -133,6 +136,8 @@ public class Hamburger : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(0f, .5f, 0f);
             instance.boxCollider.size = new Vector3(.85f, .65f, .86f);
+            
+            instance.boxCollider.enabled = false;
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -160,6 +165,7 @@ public class Hamburger : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -178,6 +184,8 @@ public class Hamburger : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(0f, .5f, 0f);
             instance.boxCollider.size = new Vector3(.85f, .65f, .86f);
+            
+            instance.boxCollider.enabled = false;
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -205,6 +213,7 @@ public class Hamburger : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandHamburger].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );

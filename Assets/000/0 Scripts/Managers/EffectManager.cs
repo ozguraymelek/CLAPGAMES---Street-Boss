@@ -5,7 +5,7 @@ using EZ_Pooling;
 
 public class EffectManager : Singleton<EffectManager>
 {
-    [SerializeField] Transform popEffect, bloodDirectional, upgradeEffect, stackOnStandEffect;
+    [SerializeField] Transform popEffect, bloodDirectional, upgradeEffect, stackOnStandEffect, levelUpEffect;
 
     [SerializeField] List<Transform> foodEffects;
 
@@ -16,6 +16,11 @@ public class EffectManager : Singleton<EffectManager>
         StartCoroutine(DespawnEffect(_effTr, 0.5f));
     }
 
+    public void LevelUpEffect(Vector3 pos, Quaternion rot)
+    {
+        Transform _effTr = EZ_PoolManager.Spawn(levelUpEffect, pos, rot);
+        StartCoroutine(DespawnEffect(_effTr, 1f));
+    }
     public void BloodDirectional(Vector3 _pos, Vector3 _euler)
     {
         Transform _effTr = EZ_PoolManager.Spawn(bloodDirectional, _pos, Quaternion.Euler(180, _euler.y, _euler.z));

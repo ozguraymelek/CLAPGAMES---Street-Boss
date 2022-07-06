@@ -84,6 +84,8 @@ public class Chip : MonoBehaviour
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
             instance.boxCollider.size = new Vector3(.24f, .16f, .6f);
             
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -110,6 +112,7 @@ public class Chip : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandChip].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -128,7 +131,9 @@ public class Chip : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(-.009f, .5f, -.09f);
             instance.boxCollider.size = new Vector3(.8f, .8f, .28f);
-                
+            
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -155,6 +160,7 @@ public class Chip : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandChip].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -173,7 +179,9 @@ public class Chip : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(-.009f, .5f, -.09f);
             instance.boxCollider.size = new Vector3(.8f, .8f, .28f);
-
+            
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -200,6 +208,7 @@ public class Chip : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandChip].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using TMPro;
 
@@ -172,7 +173,7 @@ public class Activator : MonoBehaviour, IInteractable
             _levels[levelIndex].SetActive(false);
 
         levelIndex++;
-        _levels[levelIndex].transform.localScale = Vector3.one;
+        //_levels[levelIndex].transform.localScale = Vector3.one;
         _levels[levelIndex].SetActive(true);
         
         SoundManager.Instance.StandUpgradeSound(_levels[levelIndex].transform.position);

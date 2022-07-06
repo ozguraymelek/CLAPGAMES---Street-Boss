@@ -84,6 +84,8 @@ public class Donut : MonoBehaviour
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
             instance.boxCollider.size = new Vector3(.96f, .3f, .96f);
             
+            instance.boxCollider.enabled = false;
+            
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
             
@@ -110,6 +112,7 @@ public class Donut : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandDonut].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -128,6 +131,8 @@ public class Donut : MonoBehaviour
             
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
             instance.boxCollider.size = new Vector3(.96f, .3f, .96f);
+            
+            instance.boxCollider.enabled = false;
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -155,6 +160,7 @@ public class Donut : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandDonut].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
@@ -173,6 +179,8 @@ public class Donut : MonoBehaviour
 
             instance.boxCollider.center = new Vector3(0, .5f, 0f);
             instance.boxCollider.size = new Vector3(.96f, .3f, .96f);
+            
+            instance.boxCollider.enabled = false;
             
             instance.transform.parent = transform.GetChild(4);
             instance.transform.localPosition = new Vector3(0f, 1.35f, 0f);
@@ -200,6 +208,7 @@ public class Donut : MonoBehaviour
                 instance.transform
                     .DOJump(foodAreaRef.standPoints[foodAreaRef.indexStandDonut].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
+                            instance.boxCollider.enabled = true;
                             Completed(instance.transform);
                         }
                     );
