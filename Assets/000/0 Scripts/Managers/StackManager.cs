@@ -876,7 +876,7 @@ public class StackManager : Singleton<StackManager>
         objectsOnDesk[objectsOnDesk.Count - 1].GetComponent<BoxCollider>().enabled = false;
         
         objectsOnDesk[objectsOnDesk.Count - 1].transform.parent = customer.transform;
-        objectsOnDesk[objectsOnDesk.Count - 1].transform.localPosition = new Vector3(0f, .7f, .418f);
+        objectsOnDesk[objectsOnDesk.Count - 1].transform.localPosition = new Vector3(-.055f, .95f, .5f);
         objectsOnDesk[objectsOnDesk.Count - 1].transform.eulerAngles = new Vector3(0f, 163.967f, 0f);
         //objectsOnDesk[objectsOnDesk.Count - 1].DOScale(.5f, 1f); 
 

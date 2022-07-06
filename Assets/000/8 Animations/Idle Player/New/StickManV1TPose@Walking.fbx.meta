@@ -8,7 +8,7 @@ ModelImporter:
     second: Walking
   - first:
       74: -203655887218126122
-    second: mixamo.com
+    second: Walking
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -44,7 +44,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Walking
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
@@ -55,10 +55,10 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
@@ -70,7 +70,7 @@ ModelImporter:
       events: []
       transformMask: []
       maskType: 3
-      maskSource: {instanceID: 0}
+      maskSource: {fileID: 31900000, guid: d4fa9c0217294e44e86b58e013b7901f, type: 2}
       additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
