@@ -1894,6 +1894,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6047320035155365650, guid: e5331ddc7419a3b4d8708709e35e8a47,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6047320035155365653, guid: e5331ddc7419a3b4d8708709e35e8a47,
         type: 3}
       propertyPath: looping

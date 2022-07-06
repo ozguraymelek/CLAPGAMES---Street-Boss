@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
@@ -44,12 +40,12 @@ public class UI_Manager : Singleton<UI_Manager>
     #region Player Info
     public void IncreasePlayerMoney()
     {
-        playerSettings.playerMoney += 10;
+        playerSettings.playerMoney += 2;
         tmp_PlayerMoney.text = playerSettings.playerMoney.ToString();
     }        
     public void DecreasePlayerMoney()
     {
-        playerSettings.playerMoney -= 10;
+        playerSettings.playerMoney -= 2;
         tmp_PlayerMoney.text = playerSettings.playerMoney.ToString();
 
         if (playerSettings.playerMoney <= 0)
@@ -214,82 +210,5 @@ public class UI_Manager : Singleton<UI_Manager>
         }
     }
     
-    public void DecreaseFoodCountToObstacle(Food _food)
-    {
-        if (_food.activeFood == _food.hamburgerTypes[0] ||_food.activeFood == _food.hamburgerTypes[1] || 
-            _food.activeFood == _food.hamburgerTypes[2])
-        {
-            hamburgerCount--;
-            hamburgerCountInfo.text = hamburgerCount.ToString();
-
-            if (hamburgerCount <= 0)
-            {
-                hamburgerCount = 0;
-                hamburgerCountInfo.text = hamburgerCount.ToString();
-            }
-        }
-            
-        if (_food.activeFood == _food.hotDogTypes[0] || _food.activeFood == _food.hotDogTypes[1] || 
-            _food.activeFood == _food.hotDogTypes[2])
-        {
-            hotdogCount--;
-            hotdogCountInfo.text = hotdogCount.ToString();
-            
-            if (hotdogCount <= 0)
-            {
-                hotdogCount = 0;
-                hotdogCountInfo.text = hotdogCount.ToString();
-            }
-        }
-
-        if (_food.activeFood == _food.iceCreamTypes[0] || _food.activeFood == _food.iceCreamTypes[1] ||
-            _food.activeFood == _food.iceCreamTypes[2])
-        {
-            icecreamCount--;
-            icecreamCountInfo.text = icecreamCount.ToString();
-
-            if (icecreamCount <= 0)
-            {
-                icecreamCount = 0;
-                icecreamCountInfo.text = icecreamCount.ToString();
-            }
-        }
-        if (_food.activeFood == _food.donutTypes[0] || _food.activeFood == _food.donutTypes[1] ||
-            _food.activeFood == _food.donutTypes[2])
-        {
-            donutCount--;
-            donutCountInfo.text = donutCount.ToString();
-
-            if (donutCount <= 0)
-            {
-                donutCount = 0;
-                donutCountInfo.text = donutCount.ToString();
-            }
-        }
-        if (_food.activeFood == _food.popcornTypes[0] || _food.activeFood == _food.popcornTypes[1] ||
-            _food.activeFood == _food.popcornTypes[2])
-        {
-            popcornCount--;
-            popcornCountInfo.text = popcornCount.ToString();
-
-            if (popcornCount <= 0)
-            {
-                popcornCount = 0;
-                popcornCountInfo.text = popcornCount.ToString();
-            }
-        }
-        if (_food.activeFood == _food.chipsTypes[0] || _food.activeFood == _food.chipsTypes[1] ||
-            _food.activeFood == _food.chipsTypes[2])
-        {
-            chipCount--;
-            popcornCountInfo.text = chipCount.ToString();
-
-            if (chipCount <= 0)
-            {
-                chipCount = 0;
-                chipCountInfo.text = chipCount.ToString();
-            }
-        }
-    }
     #endregion
 }

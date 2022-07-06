@@ -9,6 +9,7 @@ public class Customer : MonoBehaviour, ICustomer
     public NavMeshAgent agent;
     public List<Transform> money;
     [SerializeField] internal Animator animator;
+    [SerializeField] internal Transform foodStackPoint;
 
     [Header("Settings")]
     [Space]

@@ -79,7 +79,7 @@ public class Activator : MonoBehaviour, IInteractable
     {
         Color textColor;
         if (levelIndex != prices.Length)
-            remainingMoneyTMP.text = (pricesToText[levelIndex] - (spendedDeck*10)).ToString();
+            remainingMoneyTMP.text = (pricesToText[levelIndex] - (spendedDeck*2)).ToString();
         else
         {
             textColor = new Color(0b_1, 0b0, 0b0, 0b1);

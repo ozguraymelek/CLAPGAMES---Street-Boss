@@ -15,7 +15,7 @@ MonoBehaviour:
   speed: 400
   rotationSpeed: 9
   cameraTrasitionTime: 1.5
-  hamburgerBuildingIndex: 1
+  hamburgerBuildingIndex: 0
   hotdogbuildingIndex: 0
   iceCreambuildingIndex: 0
   chipsbuildingIndex: 0

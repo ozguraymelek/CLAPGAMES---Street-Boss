@@ -361,6 +361,7 @@ Transform:
   - {fileID: 6000518770479577731}
   - {fileID: 6089171195525917529}
   - {fileID: 7209054626824299818}
+  - {fileID: 5109028879729288714}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -399,6 +400,7 @@ MonoBehaviour:
   agent: {fileID: 731473522}
   money: []
   animator: {fileID: 731473524}
+  foodStackPoint: {fileID: 5109028879729288714}
   pathway:
   - {fileID: 0}
   - {fileID: 0}
@@ -461,8 +463,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.762658, y: 2.5907123, z: 0.60443}
-  m_Center: {x: 0.000000059604645, y: 1.2756912, z: -0.09606698}
+  m_Size: {x: 0.762658, y: 2.5907123, z: 0.9188184}
+  m_Center: {x: 0.000000059604645, y: 1.2756912, z: 0.061127216}
 --- !u!1 &1485513808131194867
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,8 +783,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3089779000833603843}
-  m_LocalRotation: {x: -0.27660173, y: 0.5746976, z: -0.21492779, w: -0.73960817}
-  m_LocalPosition: {x: 0, y: 0, z: -0.837}
+  m_LocalRotation: {x: -0.22408116, y: 0.7199232, z: -0.26923987, w: -0.59917283}
+  m_LocalPosition: {x: 0, y: 0, z: -1.154}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -793,7 +795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.718, y: 2.974}
+  m_AnchoredPosition: {x: -0.311, y: 2.858}
   m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4913854205156954169
@@ -2341,6 +2343,37 @@ Transform:
   - {fileID: 4049549790234071021}
   m_Father: {fileID: 3701121863016279493}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8923330709974787150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5109028879729288714}
+  m_Layer: 0
+  m_Name: FoodStackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5109028879729288714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923330709974787150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.52, z: 0.569}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1743036344659390820}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8994972282236202419
 GameObject:

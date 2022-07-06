@@ -860,11 +860,11 @@ public class StackManager : Singleton<StackManager>
     public bool canSale = false;
     [SerializeField] private float decreaseIdle;
 
-    public void GetAllFoods(Customer targetTr, ActivatorMoney activatorMoney, GameSettings gameSettings)
+    public void GetAllFoods(Customer customer, ActivatorMoney activatorMoney, GameSettings gameSettings)
     {
-        SetAnimation(targetTr);
-        objectsOnDesk[objectsOnDesk.Count - 1].transform.DOJump(targetTr.transform.position, 6.0f, 1, .6f).OnComplete(
-            () => ResetObjectTr(targetTr, activatorMoney, gameSettings));
+        SetAnimation(customer);
+        objectsOnDesk[objectsOnDesk.Count - 1].transform.DOJump(customer.transform.position, 6.0f, 1, .6f).OnComplete(
+            () => ResetObjectTr(customer, activatorMoney, gameSettings));
     }
 
     void SetAnimation(Customer targetTr)
