@@ -68,6 +68,7 @@ public class UI_Manager : Singleton<UI_Manager>
     {
         activeIcon = customer.angryIcon;
         activeIcon.SetActive(true); 
+        
         ProcessUIScale(customer);
     }
     void ProcessUIScale(Customer customer)
