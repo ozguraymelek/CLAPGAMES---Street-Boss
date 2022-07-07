@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5095084399815434030}
   - component: {fileID: 5095084399815434028}
   - component: {fileID: 5095084399815434031}
+  - component: {fileID: 3181781843727140758}
   m_Layer: 0
   m_Name: Dekor
   m_TagString: Untagged
@@ -25,15 +26,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5095084399815434033}
-  m_LocalRotation: {x: -0.7071068, y: -0.000000061817246, z: -0.000000061817246, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4398, y: 1.4398003, z: 1.4398003}
+  m_LocalScale: {x: 0.45987216, y: 0.45987222, z: 0.45987222}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4701715375271367932}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5095084399815434028
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -89,6 +90,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3181781843727140758
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5095084399815434033}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.968031, y: 8.779937, z: 1.5292588}
+  m_Center: {x: 0.052428823, y: 0.052453704, z: 0.5645404}
 --- !u!1001 &5095084400303387415
 PrefabInstance:
   m_ObjectHideFlags: 0
