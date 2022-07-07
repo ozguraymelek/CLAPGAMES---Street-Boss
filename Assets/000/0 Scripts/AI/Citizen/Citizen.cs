@@ -34,7 +34,7 @@ public class Citizen : MonoBehaviour
     {
         if (agent.hasPath == false)
         {
-            currentTargetPos = randPositions[Random.Range(0, randPositions.Length + 1)];
+            currentTargetPos = randPositions[Random.Range(0, randPositions.Length - 1)];
             agent.SetDestination(currentTargetPos);
 
             print("Moving to randPos " + currentTargetPos);

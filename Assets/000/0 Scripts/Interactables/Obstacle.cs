@@ -6,17 +6,19 @@ public abstract class Obstacle : MonoBehaviour
 {
     [Header("References")]
     [Space]
-    [SerializeField] private CkyBehaviour behaviour;
+    [SerializeField] internal CkyBehaviour behaviour;
 
     private void Start()
     {
-        behaviour.ObstacleMovementKnife(this);
+        //behaviour.ObstacleMovementKnife(this);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.GetComponent<Prince>() != null) return;
+        
         IStackable _interactable = other.GetComponent<IStackable>();
-
+        
         if (_interactable == null) return;
 
         _interactable.Scatter();

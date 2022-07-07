@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Game Settings
   m_EditorClassIdentifier: 
   speed: 400
-  rotationSpeed: 7
+  rotationSpeed: 9
   cameraTrasitionTime: 1.5
   hamburgerBuildingIndex: 0
   hotdogbuildingIndex: 0
@@ -21,30 +21,31 @@ MonoBehaviour:
   chipsbuildingIndex: 0
   donutbuildingIndex: 0
   popcornbuildingIndex: 0
-  hamburgerPrizeLVL0: 5
-  hamburgerPrizeLVL1: 7
-  hamburgerPrizeLVL2: 9
-  hamburgerPrizeLVL3: 11
-  hotDogPrizeLVL0: 7
-  hotDogPrizeLVL2: 9
-  hotDogPrizeLVL3: 11
-  hotDogPrizeLVL1: 13
-  iceCreamPrizeLVL0: 15
-  iceCreamPrizeLVL1: 17
-  iceCreamPrizeLVL2: 19
-  iceCreamPrizeLVL3: 21
-  donutPrizeLVL0: 9
-  donutPrizeLVL1: 0
-  donutPrizeLVL2: 0
-  donutPrizeLVL3: 0
-  popcornPrizeLVL0: 13
-  popcornPrizeLVL1: 0
-  popcornPrizeLVL2: 0
-  popcornPrizeLVL3: 0
-  chipPrizeLVL0: 15
-  chipPrizeLVL1: 0
-  chipPrizeLVL2: 0
-  chipPrizeLVL3: 0
-  hamburgerMeshLevel1: {fileID: 0}
+  hamburgerPrizeLVL0: 6
+  hamburgerPrizeLVL1: 8
+  hamburgerPrizeLVL2: 10
+  hamburgerPrizeLVL3: 12
+  hotDogPrizeLVL0: 0
+  hotDogPrizeLVL2: 10
+  hotDogPrizeLVL3: 12
+  hotDogPrizeLVL1: 14
+  iceCreamPrizeLVL0: 0
+  iceCreamPrizeLVL1: 12
+  iceCreamPrizeLVL2: 14
+  iceCreamPrizeLVL3: 16
+  donutPrizeLVL0: 0
+  donutPrizeLVL1: 14
+  donutPrizeLVL2: 16
+  donutPrizeLVL3: 18
+  popcornPrizeLVL0: 0
+  popcornPrizeLVL1: 16
+  popcornPrizeLVL2: 18
+  popcornPrizeLVL3: 20
+  chipPrizeLVL0: 0
+  chipPrizeLVL1: 18
+  chipPrizeLVL2: 20
+  chipPrizeLVL3: 22
+  hamburgerMeshLevel1: {fileID: 7364179843722902624, guid: e75fd510cfa077a4f834d1aee3cae04b,
+    type: 3}
   hamburgerMeshLevel2: {fileID: 0}
   hamburgerMeshLevel3: {fileID: 0}

@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxMachine : MonoBehaviour
+public class BoxMachine : Obstacle
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
+    {
+        behaviour = FindObjectOfType<CkyBehaviour>();
+    }
+    public override void KnifeMovement()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void SawMovement()
     {
         
     }

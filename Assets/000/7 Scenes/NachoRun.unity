@@ -7582,7 +7582,7 @@ PrefabInstance:
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
@@ -8991,9 +8991,9 @@ Transform:
   - {fileID: 1725264886}
   - {fileID: 1850410465}
   - {fileID: 1680792177}
-  - {fileID: 1559322643}
   - {fileID: 344004160}
   - {fileID: 722839812}
+  - {fileID: 1559322643}
   m_Father: {fileID: 282130010}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14147,8 +14147,8 @@ MonoBehaviour:
   - {fileID: 752198191}
   - {fileID: 923738338}
   - {fileID: 133523590}
-  prices: 2d00000037000000410000004b000000
-  pricesToText: c2010000260200008a020000ee020000
+  prices: 77010000f40100008a0200004b000000
+  pricesToText: ee020000e80300001405000014050000
   levelIndex: 0
   activatorId: 0
   collectedMoney: 0
@@ -20808,7 +20808,7 @@ PrefabInstance:
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
@@ -21302,7 +21302,7 @@ Transform:
   - {fileID: 616693844}
   - {fileID: 518267673}
   m_Father: {fileID: 134156353}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &344654569
 GameObject:
@@ -22643,7 +22643,7 @@ PrefabInstance:
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
@@ -29690,96 +29690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisTMP: {fileID: 468288337}
---- !u!1001 &469282904
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2128708780}
-    m_Modifications:
-    - target: {fileID: 4212404071947366124, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_WarningMessage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7484572838546468396, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_Name
-      value: CitizenTextingAndWalking (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540817, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_Speed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540817, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 80.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4909e24e3fdc16b4b83f03d57d4af7ed, type: 3}
---- !u!4 &469282905 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 469282904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &469796682
 GameObject:
   m_ObjectHideFlags: 0
@@ -32776,8 +32686,8 @@ MonoBehaviour:
   - {fileID: 1024745482}
   - {fileID: 433187700}
   - {fileID: 690434982}
-  prices: 410000004b000000550000005f000000
-  pricesToText: 8a020000ee02000052030000b6030000
+  prices: ee020000e8030000e2040000e2040000
+  pricesToText: dc050000d0070000c4090000c4090000
   levelIndex: 0
   activatorId: 0
   collectedMoney: 0
@@ -36546,8 +36456,8 @@ MonoBehaviour:
   - {fileID: 973993881}
   - {fileID: 1387353148}
   - {fileID: 90886991}
-  prices: 0400000015000000240000002c000000
-  pricesToText: 28000000d200000068010000b8010000
+  prices: 14000000320000007d0000007d000000
+  pricesToText: 2800000064000000fa000000fa000000
   levelIndex: 0
   activatorId: 0
   collectedMoney: 0
@@ -41285,7 +41195,7 @@ PrefabInstance:
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
@@ -42364,7 +42274,7 @@ PrefabInstance:
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
@@ -44893,7 +44803,7 @@ Transform:
   - {fileID: 759824477}
   - {fileID: 1774322811}
   m_Father: {fileID: 134156353}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725254636
 GameObject:
@@ -73249,7 +73159,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214440304}
-  m_LocalRotation: {x: 0.11373687, y: 0.000000017620845, z: -0.0000000020172295, w: 0.99351096}
+  m_LocalRotation: {x: 0.11373687, y: -0.000000017620835, z: 0.0000000020172284, w: 0.99351096}
   m_LocalPosition: {x: 0.000030517574, y: 4.0300303, z: -198.25996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -75744,7 +75654,7 @@ PrefabInstance:
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
@@ -83647,7 +83557,7 @@ PrefabInstance:
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
@@ -86914,8 +86824,8 @@ MonoBehaviour:
   - {fileID: 1334353503}
   - {fileID: 1205628306}
   - {fileID: 652882355}
-  prices: 37000000410000004b00000055000000
-  pricesToText: 260200008a020000ee02000052030000
+  prices: ca080000c4090000be0a0000be0a0000
+  pricesToText: 94110000881300007c1500007c150000
   levelIndex: 0
   activatorId: 0
   collectedMoney: 0
@@ -91640,7 +91550,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559322642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 21.86, y: 0.5, z: 9.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -91648,7 +91558,7 @@ Transform:
   - {fileID: 155768005}
   - {fileID: 1480344547}
   m_Father: {fileID: 134156353}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1559746777
 GameObject:
@@ -92453,28 +92363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: 3bb6aecdf1097b549893cdb09c81c673, type: 2}
   levels: []
-  doors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  doors: []
   index: 0
   activeLevel: {fileID: 0}
 --- !u!1 &1585593827
@@ -92611,8 +92500,8 @@ MonoBehaviour:
   - {fileID: 1236266141}
   - {fileID: 1435356077}
   - {fileID: 784197977}
-  prices: 230000002d0000003700000041000000
-  pricesToText: 5e010000c2010000260200008a020000
+  prices: 96000000e10000005e0100005e010000
+  pricesToText: 2c010000c2010000bc020000bc020000
   levelIndex: 0
   activatorId: 0
   collectedMoney: 0
@@ -102827,10 +102716,10 @@ MonoBehaviour:
     enableHardLimit: 0
     hardLimit: 10
     recycle: 1
-  - prefabTransform: {fileID: 5414914999354362217, guid: 0368e10e64e3c8a4e91fd91119275ed8,
+  - prefabTransform: {fileID: 7777614812117197695, guid: 9ab3b065757fbc1479340345bdfbf39c,
       type: 3}
     instancesToPreload: 1
-    isPoolExpanded: 0
+    isPoolExpanded: 1
     showDebugLog: 0
     poolCanGrow: 1
     cullDespawned: 0
@@ -102840,10 +102729,10 @@ MonoBehaviour:
     enableHardLimit: 0
     hardLimit: 10
     recycle: 1
-  - prefabTransform: {fileID: 2874505803237076446, guid: ecf79891ebf14be4089f5623d7e08a68,
+  - prefabTransform: {fileID: 7777614812117197695, guid: 8a30d23a98a3a2347a75e93e05d8d039,
       type: 3}
     instancesToPreload: 1
-    isPoolExpanded: 0
+    isPoolExpanded: 1
     showDebugLog: 0
     poolCanGrow: 1
     cullDespawned: 0
@@ -102853,10 +102742,10 @@ MonoBehaviour:
     enableHardLimit: 0
     hardLimit: 10
     recycle: 1
-  - prefabTransform: {fileID: 8376754297604196991, guid: 56bad50c8da725c41ba8385a0245fe92,
+  - prefabTransform: {fileID: 7777614812117197695, guid: adb6a127d9fc8774cb12a1e49168fb78,
       type: 3}
     instancesToPreload: 1
-    isPoolExpanded: 0
+    isPoolExpanded: 1
     showDebugLog: 0
     poolCanGrow: 1
     cullDespawned: 0
@@ -102866,10 +102755,10 @@ MonoBehaviour:
     enableHardLimit: 0
     hardLimit: 10
     recycle: 1
-  - prefabTransform: {fileID: 8889980789940121877, guid: e75fd510cfa077a4f834d1aee3cae04b,
+  - prefabTransform: {fileID: 7777614812117197695, guid: a2f2098f695d43b4fb899018aba6ab13,
       type: 3}
     instancesToPreload: 1
-    isPoolExpanded: 0
+    isPoolExpanded: 1
     showDebugLog: 0
     poolCanGrow: 1
     cullDespawned: 0
@@ -102879,10 +102768,10 @@ MonoBehaviour:
     enableHardLimit: 0
     hardLimit: 10
     recycle: 1
-  - prefabTransform: {fileID: 8502318654637376712, guid: a6bc8d41d342a8940affbbf6204c1cca,
+  - prefabTransform: {fileID: 7777614812117197695, guid: 75b69e2b6a6d2874d81c4c8fb170593f,
       type: 3}
     instancesToPreload: 1
-    isPoolExpanded: 0
+    isPoolExpanded: 1
     showDebugLog: 0
     poolCanGrow: 1
     cullDespawned: 0
@@ -103650,7 +103539,7 @@ PrefabInstance:
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
@@ -103844,8 +103733,8 @@ MonoBehaviour:
   - {fileID: 1792628723}
   - {fileID: 1485446675}
   - {fileID: 1804810922}
-  prices: 4b000000550000005f00000064000000
-  pricesToText: ee02000052030000b6030000e8030000
+  prices: dc050000d6060000d0070000d0070000
+  pricesToText: b80b0000ac0d0000a00f0000a00f0000
   levelIndex: 0
   activatorId: 0
   collectedMoney: 0
@@ -108177,11 +108066,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - {fileID: 7777614812117197694, guid: 8ed2afe92179d014c993e8219f680a5b, type: 3}
-  - {fileID: 8502318654637376715, guid: a6bc8d41d342a8940affbbf6204c1cca, type: 3}
-  - {fileID: 8889980789940121876, guid: e75fd510cfa077a4f834d1aee3cae04b, type: 3}
-  - {fileID: 8376754297604196976, guid: 56bad50c8da725c41ba8385a0245fe92, type: 3}
-  - {fileID: 2874505803237076441, guid: ecf79891ebf14be4089f5623d7e08a68, type: 3}
-  - {fileID: 5414914999354362218, guid: 0368e10e64e3c8a4e91fd91119275ed8, type: 3}
+  - {fileID: 7777614812117197694, guid: 75b69e2b6a6d2874d81c4c8fb170593f, type: 3}
+  - {fileID: 7777614812117197694, guid: a2f2098f695d43b4fb899018aba6ab13, type: 3}
+  - {fileID: 7777614812117197694, guid: adb6a127d9fc8774cb12a1e49168fb78, type: 3}
+  - {fileID: 7777614812117197694, guid: 8a30d23a98a3a2347a75e93e05d8d039, type: 3}
+  - {fileID: 7777614812117197694, guid: 9ab3b065757fbc1479340345bdfbf39c, type: 3}
 --- !u!1 &1841677494
 GameObject:
   m_ObjectHideFlags: 0
@@ -118166,7 +118055,7 @@ PrefabInstance:
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
@@ -125917,7 +125806,6 @@ Transform:
   - {fileID: 1076297860}
   - {fileID: 935199807}
   - {fileID: 557676228}
-  - {fileID: 469282905}
   - {fileID: 688643239}
   - {fileID: 2009869114}
   - {fileID: 1420679759}
@@ -132547,16 +132435,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CitizenTextingAndWalking
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540817, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_Speed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824261065040540817, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7824261065040540822, guid: 4909e24e3fdc16b4b83f03d57d4af7ed,
         type: 3}
