@@ -10,12 +10,15 @@ public class ActivatorCustomer : MonoBehaviour
     [Space]
     [SerializeField] private GameSettings gameSettings;
 
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<ICustomer>() != null)
         {
             if (StackManager.Instance.objectsOnDesk.Count == 0) return;
-
+            if(other.GetComponent<Customer>().interacted == true) return;
+            
+            
             print("Customer interacted!");
             StackManager.Instance.GetAllFoods(other.GetComponent<Customer>(), FindObjectOfType<ActivatorMoney>(), gameSettings);
         }

@@ -15,6 +15,8 @@ public class Customer : MonoBehaviour, ICustomer
     [Space]
     public List<Transform> pathway;
 
+    public bool interacted = false;
+
     [SerializeField] internal Transform canvas;
     [SerializeField] internal GameObject happyIcon;
     [SerializeField] internal GameObject angryIcon;

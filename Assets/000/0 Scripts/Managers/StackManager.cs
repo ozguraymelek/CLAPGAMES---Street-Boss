@@ -883,7 +883,7 @@ public class StackManager : Singleton<StackManager>
         //objectsOnDesk[objectsOnDesk.Count - 1].DOScale(.5f, 1f); 
 
         Sale(customer, activatorMoney, gameSettings);
-
+        customer.interacted = true;
         objectsOnDesk.Remove(objectsOnDesk[objectsOnDesk.Count - 1]);
     }
 
