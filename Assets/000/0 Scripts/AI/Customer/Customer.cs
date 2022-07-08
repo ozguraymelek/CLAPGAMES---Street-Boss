@@ -8,8 +8,8 @@ public class Customer : MonoBehaviour, ICustomer
     [Header("Components")]
     public NavMeshAgent agent;
     public List<Transform> money;
-    [SerializeField] internal Animator animator;
-    [SerializeField] internal Transform foodStackPoint;
+    public Animator animator;
+    public Transform foodStackPoint;
 
     [Header("Settings")]
     [Space]
@@ -17,10 +17,10 @@ public class Customer : MonoBehaviour, ICustomer
 
     public bool interacted = false;
 
-    [SerializeField] internal Transform canvas;
-    [SerializeField] internal GameObject happyIcon;
-    [SerializeField] internal GameObject angryIcon;
-    [SerializeField] internal List<GameObject> iconsHolder;
+    public Transform canvas;
+    public GameObject happyIcon;
+    public GameObject angryIcon;
+    public List<GameObject> iconsHolder;
     public int randPos;
 
     private void Start()

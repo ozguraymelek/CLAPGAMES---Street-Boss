@@ -12,10 +12,24 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private Transform audioSourceStackRunnerToIdle;
     [SerializeField] private Transform audioSourceStackRunner;
     [SerializeField] private Transform audioSourceStandUpgrade;
+    [SerializeField] private Transform audioSourceMexicianWave;
+    [SerializeField] private Transform audioSourceBoingStand;
     
     [SerializeField] AudioClip popSound;
     [SerializeField] Transform popSound3DTr;
+    
+    public void MexicianWave(Vector3 pos)
+    {
+        Transform sound = EZ_PoolManager.Spawn(audioSourceMexicianWave, pos, Quaternion.identity);
 
+        StartCoroutine(DespawnEffect(sound, 1f));
+    }
+    public void BoingStandSound(Vector3 pos)
+    {
+        Transform sound = EZ_PoolManager.Spawn(audioSourceBoingStand, pos, Quaternion.identity);
+
+        StartCoroutine(DespawnEffect(sound, 1f));
+    }
     public void PopSound(float soundValue)
     {
         audioSource.PlayOneShot(popSound, soundValue);

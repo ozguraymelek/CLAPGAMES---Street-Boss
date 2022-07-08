@@ -6,7 +6,7 @@ public abstract class Obstacle : MonoBehaviour
 {
     [Header("References")]
     [Space]
-    [SerializeField] internal CkyBehaviour behaviour;
+    public CkyBehaviour behaviour;
 
     private void Start()
     {

@@ -42,13 +42,13 @@ public class StackManager : Singleton<StackManager>
     public Image instanceMoneyIcon;
 
     [Header("Transform Settings")] [SerializeField]
-    internal float refHamburgerPosY = 0f;
+    public float refHamburgerPosY = 0f;
 
-    [SerializeField] internal float refHotDogPosY = 0f;
-    [SerializeField] internal float refIceCreamPosY = 0f;
-    [SerializeField] internal float refDonutPosY = 0f;
-    [SerializeField] internal float refPopcornPosY = 0f;
-    [SerializeField] internal float refChipPosY = 0f;
+    [SerializeField] public float refHotDogPosY = 0f;
+    [SerializeField] public float refIceCreamPosY = 0f;
+    [SerializeField] public float refDonutPosY = 0f;
+    [SerializeField] public float refPopcornPosY = 0f;
+    [SerializeField] public float refChipPosY = 0f;
 
     [Header("Scriptable Object Reference")] [SerializeField]
     private PlayerSettings playerSettings;
@@ -86,6 +86,8 @@ public class StackManager : Singleton<StackManager>
     private float _speedX;
     [SerializeField] float lerpSpeedForIdle;
 
+    public PhysicMaterial physicMaterial;
+    
     Sequence seq;
     Vector3 normalScale;
     bool canMexicanVawe = true;
@@ -357,6 +359,8 @@ public class StackManager : Singleton<StackManager>
     IEnumerator DelayedWave(int _i, float _t)
     {
         Food _food = foods[_i];
+        
+        SoundManager.Instance.MexicianWave(_food.transform.position);
         yield return new WaitForSeconds(_t);
 
         if (_food.gameObject != null)
@@ -890,9 +894,9 @@ public class StackManager : Singleton<StackManager>
     void ResetandAddMoneyTr(GameObject instance, ActivatorMoney activatorMoney)
     {
         collectedMoneyFromCustomers.Add(instance.transform);
-        instance.transform.parent = activatorMoney.moneyIndexes[ActivatorMoney.i].transform;
-        instance.transform.localPosition = Vector3.zero;
-        instance.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+        instance.transform.parent = null;
+        // instance.transform.localPosition = Vector3.zero;
+        // instance.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
     }
 
     void GoToStartPoint(Customer customer)
@@ -911,21 +915,19 @@ public class StackManager : Singleton<StackManager>
             collectedHamburgers.Remove(food.transform);
             for (int i = 0; i < HamburgerLevel(gameSettings); i++)
             {
-                var diss = 0.7f;
-                var randomX = Random.Range(-diss, diss);
-                var randomY = Random.Range(-diss, diss);
-                var randomPos = new Vector3(randomX, .174f, randomY);
-
                 GameObject instanceMoneyToCustomer = Instantiate(moneyPrefabForCustomer, customer.transform);
+                instanceMoneyToCustomer.AddComponent<Rigidbody>();
+                instanceMoneyToCustomer.AddComponent<BoxCollider>();
+                
                 instanceMoneyToCustomer.transform
-                    .DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f).OnComplete(() =>
+                    .DOJump(activatorMoney.moneyIndexes[UnityEngine.Random.Range(0,activatorMoney.moneyIndexes.Count-1)].position, 5.0f, 1, .7f).OnComplete(() =>
                         {
-                            // UI_Manager.Instance.DecreaseFoodCountToUI(food);
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
                             ActivatorMoney.i++;
                             GoToStartPoint(customer);
                         }
                     );
+                
             }
         }
 
@@ -936,14 +938,13 @@ public class StackManager : Singleton<StackManager>
             collectedHotDogs.Remove(food.transform);
             for (int i = 0; i < HotDogLevel(gameSettings); i++)
             {
-                var diss = 0.7f;
-                var randomX = Random.Range(-diss, diss);
-                var randomY = Random.Range(-diss, diss);
-                var randomPos = new Vector3(randomX, .174f, randomY);
 
                 GameObject instanceMoneyToCustomer = Instantiate(moneyPrefabForCustomer, customer.transform);
+                instanceMoneyToCustomer.AddComponent<Rigidbody>();
+                instanceMoneyToCustomer.AddComponent<BoxCollider>();
+                
                 instanceMoneyToCustomer.transform
-                    .DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f).OnComplete(() =>
+                    .DOJump(activatorMoney.moneyIndexes[UnityEngine.Random.Range(0,activatorMoney.moneyIndexes.Count-1)].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
                             // UI_Manager.Instance.DecreaseFoodCountToUI(food);
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
@@ -961,14 +962,12 @@ public class StackManager : Singleton<StackManager>
             collectedIceCreams.Remove(food.transform);
             for (int i = 0; i < IceCreamLevel(gameSettings); i++)
             {
-                var diss = 0.7f;
-                var randomX = Random.Range(-diss, diss);
-                var randomY = Random.Range(-diss, diss);
-                var randomPos = new Vector3(randomX, .174f, randomY);
-
                 GameObject instanceMoneyToCustomer = Instantiate(moneyPrefabForCustomer, customer.transform);
+                instanceMoneyToCustomer.AddComponent<Rigidbody>();
+                instanceMoneyToCustomer.AddComponent<BoxCollider>();
+                
                 instanceMoneyToCustomer.transform
-                    .DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f).OnComplete(() =>
+                    .DOJump(activatorMoney.moneyIndexes[UnityEngine.Random.Range(0,activatorMoney.moneyIndexes.Count-1)].position, 2.0f, 1, .7f).OnComplete(() =>
                         {
                             // UI_Manager.Instance.DecreaseFoodCountToUI(food);
                             ResetandAddMoneyTr(instanceMoneyToCustomer, activatorMoney);
@@ -986,13 +985,12 @@ public class StackManager : Singleton<StackManager>
             collectedDonuts.Remove(food.transform);
             for (int i = 0; i < DonutLevel(gameSettings); i++)
             {
-                var diss = 0.7f;
-                var randomX = Random.Range(-diss, diss);
-                var randomY = Random.Range(-diss, diss);
-                var randomPos = new Vector3(randomX, .174f, randomY);
-
                 GameObject instanceMoneyToCustomer = Instantiate(moneyPrefabForCustomer, customer.transform);
-                instanceMoneyToCustomer.transform.DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f)
+                instanceMoneyToCustomer.AddComponent<Rigidbody>();
+                instanceMoneyToCustomer.AddComponent<BoxCollider>();
+                
+                instanceMoneyToCustomer.transform.
+                    DOJump(activatorMoney.moneyIndexes[UnityEngine.Random.Range(0,activatorMoney.moneyIndexes.Count-1)].position, 2.0f, 1, .7f)
                     .OnComplete(() =>
                         {
                             // UI_Manager.Instance.DecreaseFoodCountToUI(food);
@@ -1011,13 +1009,12 @@ public class StackManager : Singleton<StackManager>
             collectedPopcorns.Remove(food.transform);
             for (int i = 0; i < PopcornLevel(gameSettings); i++)
             {
-                var diss = 0.7f;
-                var randomX = Random.Range(-diss, diss);
-                var randomY = Random.Range(-diss, diss);
-                var randomPos = new Vector3(randomX, .174f, randomY);
-
                 GameObject instanceMoneyToCustomer = Instantiate(moneyPrefabForCustomer, customer.transform);
-                instanceMoneyToCustomer.transform.DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f)
+                instanceMoneyToCustomer.AddComponent<Rigidbody>();
+                instanceMoneyToCustomer.AddComponent<BoxCollider>();
+                
+                instanceMoneyToCustomer.transform.
+                    DOJump(activatorMoney.moneyIndexes[UnityEngine.Random.Range(0,activatorMoney.moneyIndexes.Count-1)].position, 2.0f, 1, .7f)
                     .OnComplete(() =>
                         {
                             // UI_Manager.Instance.DecreaseFoodCountToUI(food);
@@ -1036,13 +1033,12 @@ public class StackManager : Singleton<StackManager>
             collectedChips.Remove(food.transform);
             for (int i = 0; i < ChipLevel(gameSettings); i++)
             {
-                var diss = 0.7f;
-                var randomX = Random.Range(-diss, diss);
-                var randomY = Random.Range(-diss, diss);
-                var randomPos = new Vector3(randomX, .174f, randomY);
-
                 GameObject instanceMoneyToCustomer = Instantiate(moneyPrefabForCustomer, customer.transform);
-                instanceMoneyToCustomer.transform.DOJump(activatorMoney.moneyIndexes[ActivatorMoney.i].position, 2.0f, 1, .7f)
+                instanceMoneyToCustomer.AddComponent<Rigidbody>();
+                instanceMoneyToCustomer.AddComponent<BoxCollider>();
+                
+                instanceMoneyToCustomer.transform.
+                    DOJump(activatorMoney.moneyIndexes[UnityEngine.Random.Range(0,activatorMoney.moneyIndexes.Count-1)].position, 2.0f, 1, .7f)
                     .OnComplete(() =>
                         {
                             // UI_Manager.Instance.DecreaseFoodCountToUI(food);

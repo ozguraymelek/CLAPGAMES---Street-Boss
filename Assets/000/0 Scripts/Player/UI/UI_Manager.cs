@@ -11,26 +11,26 @@ public class UI_Manager : Singleton<UI_Manager>
     
     [Header("Components")]
     [Space]
-    [SerializeField] internal TMP_Text tmp_PlayerMoney;
-    [SerializeField] internal GameObject activeIcon;
-    [SerializeField] internal GameObject panelGameInfoCanvas;
+    public TMP_Text tmp_PlayerMoney;
+    public GameObject activeIcon;
+    public GameObject panelGameInfoCanvas;
 
     [Header("Food Info Components")] [Space] 
     
-    [SerializeField] internal TMP_Text hamburgerCountInfo;
-    [SerializeField] internal TMP_Text hotdogCountInfo;
-    [SerializeField] internal TMP_Text icecreamCountInfo;
-    [SerializeField] internal TMP_Text donutCountInfo;
-    [SerializeField] internal TMP_Text popcornCountInfo;
-    [SerializeField] internal TMP_Text chipCountInfo;
+    public TMP_Text hamburgerCountInfo;
+    public TMP_Text hotdogCountInfo;
+    public TMP_Text icecreamCountInfo;
+    public TMP_Text donutCountInfo;
+    public TMP_Text popcornCountInfo;
+    public TMP_Text chipCountInfo;
     
     [Header("Food Info Settings")][Space]
-    [SerializeField] internal int hamburgerCount;
-    [SerializeField] internal int hotdogCount;
-    [SerializeField] internal int icecreamCount;
-    [SerializeField] internal int donutCount;
-    [SerializeField] internal int popcornCount;
-    [SerializeField] internal int chipCount;
+    public int hamburgerCount;
+    public int hotdogCount;
+    public int icecreamCount;
+    public int donutCount;
+    public int popcornCount;
+    public int chipCount;
 
     private void Start()
     {
