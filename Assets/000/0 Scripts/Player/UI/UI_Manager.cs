@@ -34,6 +34,7 @@ public class UI_Manager : Singleton<UI_Manager>
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         tmp_PlayerMoney.text = playerSettings.playerMoney.ToString();
     }
 

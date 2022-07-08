@@ -36,6 +36,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] Activator donutBuildingActivator;
     [SerializeField] Activator popcornBuildingActivator;
 
+
     private void Start()
     {
         SetTimeScale();

@@ -67,9 +67,4 @@ public class GameSettings : ScriptableObject
     public int chipPrizeLVL2;
     public int chipPrizeLVL3;
 
-    [Header("Mesh Settings")] [Space] 
-    [Header("Hamburger Meshes")] [Space]
-    public Mesh hamburgerMeshLevel1;
-    public Mesh hamburgerMeshLevel2;
-    public Mesh hamburgerMeshLevel3;
 }

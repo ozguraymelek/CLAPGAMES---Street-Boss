@@ -45,7 +45,3 @@ MonoBehaviour:
   chipPrizeLVL1: 18
   chipPrizeLVL2: 20
   chipPrizeLVL3: 22
-  hamburgerMeshLevel1: {fileID: 7364179843722902624, guid: e75fd510cfa077a4f834d1aee3cae04b,
-    type: 3}
-  hamburgerMeshLevel2: {fileID: 0}
-  hamburgerMeshLevel3: {fileID: 0}

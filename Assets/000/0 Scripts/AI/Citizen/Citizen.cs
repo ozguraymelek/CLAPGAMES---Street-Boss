@@ -36,8 +36,6 @@ public class Citizen : MonoBehaviour
         {
             currentTargetPos = randPositions[Random.Range(0, randPositions.Length - 1)];
             agent.SetDestination(currentTargetPos);
-
-            print("Moving to randPos " + currentTargetPos);
         }
     }
     public Vector3 GetRandomPos()

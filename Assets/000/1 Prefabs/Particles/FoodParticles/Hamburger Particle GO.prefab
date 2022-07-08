@@ -9699,7 +9699,7 @@ GameObject:
   - component: {fileID: 4541039637946771686}
   - component: {fileID: 7148496890090503365}
   - component: {fileID: 314630926197345628}
-  - component: {fileID: 5200259315002980255}
+  - component: {fileID: 5292060299011212305}
   m_Layer: 0
   m_Name: EnergyExplosionBlue
   m_TagString: Untagged
@@ -14483,7 +14483,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!82 &5200259315002980255
+--- !u!82 &5292060299011212305
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14493,10 +14493,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 074cee5e8624aa4428300be00e1d2bd2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ae33bf328c445ea4bab660f9c36bce7c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.85
-  m_Pitch: 0.85
+  m_Volume: 1
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -14548,7 +14548,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -14563,7 +14563,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -14578,4 +14578,4 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4

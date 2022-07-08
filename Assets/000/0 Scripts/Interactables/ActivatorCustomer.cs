@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ActivatorCustomer : MonoBehaviour
+public class ActivatorCustomer : MonoBehaviour 
 {
     [Header("Scriptable Objects Reference")]
     [Space]
@@ -19,7 +19,6 @@ public class ActivatorCustomer : MonoBehaviour
             if(other.GetComponent<Customer>().interacted == true) return;
             
             
-            print("Customer interacted!");
             StackManager.Instance.GetAllFoods(other.GetComponent<Customer>(), FindObjectOfType<ActivatorMoney>(), gameSettings);
         }
     }

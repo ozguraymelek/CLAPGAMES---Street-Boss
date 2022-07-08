@@ -75,12 +75,10 @@ public class CkyBehaviour : MonoBehaviour
     {
         if (!StackManager.Instance.foods.Equals(null))
         {
-            print("Food-List is not empty!");
             AnimationController.SetLayerWeight(GetComponent<Animator>(),"isCarrying", true);
         }
         else
         {
-            print("Food-List is empty!");
             AnimationController.SetLayerWeight(GetComponent<Animator>(), "isCarrying", false);
         }
     }

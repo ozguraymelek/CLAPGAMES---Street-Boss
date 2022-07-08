@@ -32,7 +32,6 @@ public class Customer : MonoBehaviour, ICustomer
         pathway[3] = GameObject.FindWithTag("FinishPoint").transform;
 
         randPos = Random.Range(0, 2);
-        print(randPos);
         agent.SetDestination(pathway[randPos].position);
     }
 

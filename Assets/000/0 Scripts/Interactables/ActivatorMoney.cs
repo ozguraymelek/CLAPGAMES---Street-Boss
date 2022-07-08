@@ -6,7 +6,7 @@ public class ActivatorMoney : MonoBehaviour, IActivatorMoney
 {
     [Header("Settings")]
     [Space]
-    [SerializeField] internal List<Transform> moneyIndexes;
+    public List<Transform> moneyIndexes;
     public static int i = 0;
 
     void IActivatorMoney.OnEnter()

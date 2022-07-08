@@ -9,7 +9,6 @@ public class DestroyCustomer : MonoBehaviour
     {
         if (other.GetComponent<ICustomer>() != null)
         {
-            print("s");
             Destroy(other.gameObject);
         }
     }
