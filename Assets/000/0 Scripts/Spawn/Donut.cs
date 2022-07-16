@@ -40,18 +40,21 @@ public class Donut : MonoBehaviour
 
     private void Update()
     {
-        if (canProduce)
+        if (transform.GetChild(0).gameObject.activeInHierarchy == false)
         {
-            if (countSpawnedDonut < foodAreaRef.standPoints.Count)
+            if (canProduce)
             {
-                spawnTime += Time.deltaTime;
-                if (spawnTime >= spawnRate)
+                if (countSpawnedDonut < foodAreaRef.standPoints.Count)
                 {
-                    DonutSpawn();
-                    spawnTime = 0;
-                }
-            }else
-                canProduce = false;
+                    spawnTime += Time.deltaTime;
+                    if (spawnTime >= spawnRate)
+                    {
+                        DonutSpawn();
+                        spawnTime = 0;
+                    }
+                }else
+                    canProduce = false;
+            }
         }
     }
     private void DonutSpawn()

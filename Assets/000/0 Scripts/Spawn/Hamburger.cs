@@ -44,18 +44,21 @@ public class Hamburger : MonoBehaviour
 
     private void Update()
     {
-        if (canProduce)
+        if (transform.GetChild(0).gameObject.activeInHierarchy == false)
         {
-            if (countSpawnedHamburger < foodAreaRef.standPoints.Count)
+            if (canProduce)
             {
-                spawnTime += Time.deltaTime;
-                if (spawnTime >= spawnRate)
+                if (countSpawnedHamburger < foodAreaRef.standPoints.Count)
                 {
-                    HamburgerSpawn();
-                    spawnTime = 0;
-                }
-            }else
-                canProduce = false;
+                    spawnTime += Time.deltaTime;
+                    if (spawnTime >= spawnRate)
+                    {
+                        HamburgerSpawn();
+                        spawnTime = 0;
+                    }
+                }else
+                    canProduce = false;
+            } 
         }
     }
     private void HamburgerSpawn()

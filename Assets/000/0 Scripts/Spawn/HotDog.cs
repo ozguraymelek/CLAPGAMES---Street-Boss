@@ -40,19 +40,22 @@ public class HotDog : MonoBehaviour
 
     private void Update()
     {
-        if (canProduce)
+        if (transform.GetChild(0).gameObject.activeInHierarchy == false)
         {
-            if (countSpawnedHotDog < foodAreaRef.standPoints.Count)
+            if (canProduce)
             {
-                spawnTime += Time.deltaTime;
-
-                if (spawnTime >= spawnRate)
+                if (countSpawnedHotDog < foodAreaRef.standPoints.Count)
                 {
-                    HotDogSpawn();
-                    spawnTime = 0;
-                }
-            }else
-                canProduce = false;
+                    spawnTime += Time.deltaTime;
+
+                    if (spawnTime >= spawnRate)
+                    {
+                        HotDogSpawn();
+                        spawnTime = 0;
+                    }
+                }else
+                    canProduce = false;
+            }
         }
     }
 

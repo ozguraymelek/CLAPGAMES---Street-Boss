@@ -38,19 +38,22 @@ public class IceCream : MonoBehaviour
 
     private void Update()
     {
-        if (canProduce)
+        if (transform.GetChild(0).gameObject.activeInHierarchy == false)
         {
-            if (countSpawnedIceCream < foodAreaRef.standPoints.Count)
+            if (canProduce)
             {
-                spawnTime += Time.deltaTime;
-
-                if (spawnTime >= spawnRate)
+                if (countSpawnedIceCream < foodAreaRef.standPoints.Count)
                 {
-                    IceCreamSpawn();
-                    spawnTime = 0;
-                }
-            }else
-                canProduce = false;
+                    spawnTime += Time.deltaTime;
+
+                    if (spawnTime >= spawnRate)
+                    {
+                        IceCreamSpawn();
+                        spawnTime = 0;
+                    }
+                }else
+                    canProduce = false;
+            }
         }
     }
 

@@ -40,18 +40,21 @@ public class Chip : MonoBehaviour
 
     private void Update()
     {
-        if (canProduce)
+        if (transform.GetChild(0).gameObject.activeInHierarchy == false)
         {
-            if (countSpawnedChip < foodAreaRef.standPoints.Count)
+            if (canProduce)
             {
-                spawnTime += Time.deltaTime;
-                if (spawnTime >= spawnRate)
+                if (countSpawnedChip < foodAreaRef.standPoints.Count)
                 {
-                    ChipSpawn();
-                    spawnTime = 0;
-                }
-            }else
-                canProduce = false;
+                    spawnTime += Time.deltaTime;
+                    if (spawnTime >= spawnRate)
+                    {
+                        ChipSpawn();
+                        spawnTime = 0;
+                    }
+                }else
+                    canProduce = false;
+            }
         }
     }
     private void ChipSpawn()

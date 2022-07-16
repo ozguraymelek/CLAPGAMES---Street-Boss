@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpawnCustomer : MonoBehaviour
 {
     [SerializeField] private List<Customer> customers;
     [SerializeField] private Customer customer;
-    public float spawnTime = 0;
+    [FormerlySerializedAs("spawnTime")] public float timer = 0;
+    public float spawnRate;
     
     private void Update()
     {
-        spawnTime += Time.deltaTime;
+        timer += Time.deltaTime;
 
-        if (spawnTime >= 5f)
+        if (timer >= spawnRate)
         {
             Customer cust = Instantiate(customer, transform.position, Quaternion.identity);
-            spawnTime = 0;
+            timer = 0;
         }
     }
 }

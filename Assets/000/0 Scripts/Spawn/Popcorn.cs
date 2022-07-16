@@ -40,18 +40,21 @@ public class Popcorn : MonoBehaviour
 
     private void Update()
     {
-        if (canProduce)
+        if (transform.GetChild(0).gameObject.activeInHierarchy == false)
         {
-            if (countSpawnedPopcorn < foodAreaRef.standPoints.Count)
+            if (canProduce)
             {
-                spawnTime += Time.deltaTime;
-                if (spawnTime >= spawnRate)
+                if (countSpawnedPopcorn < foodAreaRef.standPoints.Count)
                 {
-                    PopcornSpawn();
-                    spawnTime = 0;
-                }
-            }else
-                canProduce = false;
+                    spawnTime += Time.deltaTime;
+                    if (spawnTime >= spawnRate)
+                    {
+                        PopcornSpawn();
+                        spawnTime = 0;
+                    }
+                }else
+                    canProduce = false;
+            }
         }
     }
     private void PopcornSpawn()

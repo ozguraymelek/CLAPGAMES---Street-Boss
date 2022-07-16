@@ -10,6 +10,8 @@ public class CkyEvents : MonoBehaviour
     public static event Action<float> OnPlayerDamaged;
     public static event Action OnInteractWithObstacle;
 
+    public static event Action<Vector3> OnTutorial;
+
     private void Awake()
     {
         Reset();
@@ -26,6 +28,7 @@ public class CkyEvents : MonoBehaviour
         OnTransToRunner = null;
         OnTransToIdle = null;
         OnInteractWithObstacle = null;
+        OnTutorial = null;
     }
 
     public void OnStartButtonClicked()
@@ -48,6 +51,10 @@ public class CkyEvents : MonoBehaviour
         OnSuccess?.Invoke();
     }
 
+    public void OnTutorialActive(Vector3 pos)
+    {
+        OnTutorial?.Invoke(pos);
+    }
     public void OnPlayerFail()
     {
         OnFail?.Invoke();

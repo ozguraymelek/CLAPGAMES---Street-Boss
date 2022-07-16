@@ -7,24 +7,25 @@ public class Tutorial : Singleton<Tutorial>
 {
     [Header("Components")]
     [Space]
-    [SerializeField] private Transform guideArrowObject;
+    // [SerializeField] private Transform guideArrowObject;
     [SerializeField] protected List<Transform> targets;
 
-    [Header("Settings")]
-    [Space]
-    [SerializeField] private int targetIndex;
-    [SerializeField] private Vector3 currentTarget;
-    [SerializeField] private float stayTime, triggerTime = .2f;
-    private int targetCount;
-    public bool tutorialStarted = false;
-
+    [Header("Settings")] [Space] public int currentIndex;
     private void Start()
     {
-        targetIndex = 0;
-
-        targetCount = targets.Count;
-
         Globals.onTutorial = true;
+    }
 
+    private void Update()
+    {
+        
+    }
+
+    public void TutorialAlgorithm(Vector3 pos)
+    {
+        transform.parent = null;
+        transform.parent = targets[currentIndex];
+        transform.localPosition = pos; 
+        currentIndex += 1;
     }
 }

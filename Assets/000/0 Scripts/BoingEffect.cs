@@ -17,6 +17,6 @@ public class BoingEffect : MonoBehaviour
     }
     private void Update()
     {
-        //transform.rotation = camTr.rotation;
+        transform.Rotate(new Vector3(0f, 25f*Time.deltaTime, 0f));
     }
 }

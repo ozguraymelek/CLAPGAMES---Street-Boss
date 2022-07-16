@@ -19,6 +19,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/000/0 Scripts/Spawn/HotDog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/000/0 Scripts/Spawn/IceCream.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/000/000/SetModelSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.recorder@3.0.3/Runtime/RecorderBindings.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -92,7 +93,9 @@
       <workItem from="1657003328356" duration="21907000" />
       <workItem from="1657088142348" duration="11770000" />
       <workItem from="1657175206333" duration="564000" />
-      <workItem from="1657269228730" duration="9279000" />
+      <workItem from="1657269228730" duration="9975000" />
+      <workItem from="1657946293680" duration="6666000" />
+      <workItem from="1657953459274" duration="2363000" />
     </task>
     <servers />
   </component>
