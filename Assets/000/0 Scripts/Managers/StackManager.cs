@@ -86,6 +86,7 @@ public class StackManager : Singleton<StackManager>
     private float _speedX;
     [SerializeField] float lerpSpeedForIdle;
 
+    public int moneyActivatorIndex = 0;
     
     Sequence seq;
     Vector3 normalScale;
@@ -623,35 +624,36 @@ public class StackManager : Singleton<StackManager>
     public void RemoveObjectMoney(Transform targetTr)
     {
         if (0 == ReturnMoneyCount()) return;
-
-        Transform money = moneys[moneys.Count - 1];
-
+        
+        Transform money = moneys[moneyActivatorIndex];
+        
         money.transform.parent = null;
         money.gameObject.SetActive(true);
-
-        GoToTheActivator2Money(money.transform, targetTr);
-
+        
+        
+        
+        GoToTheActivator2Money(money, targetTr);
         moneys.Remove(money);
+
     }
 
     private void GoToTheActivator2Money(Transform objTr, Transform targetTr)
     {
         var diss = 0.7f;
+            
         var randomX = Random.Range(-diss, diss);
         var randomY = Random.Range(-diss, diss);
         var randomPos = new Vector3(randomX, 0, randomY);
-
-        objTr.DOJump(targetTr.position + randomPos, 2.0f, 1, moneyThrowDuration).OnComplete(
+        
+        objTr.DOMove(targetTr.position + randomPos, moneyThrowDuration).OnComplete(
             () =>
             {
                 playerSettings.takedDeck--;
                 objTr.gameObject.SetActive(false);
                 EffectManager.Instance.PopEffect(targetTr.position, Quaternion.identity);
                 UI_Manager.Instance.DecreasePlayerMoney();
-                //SoundManager.Instance.UseShield(targetTr.position);
-                //EffectManager.Instance.ShieldFountainSingle(targetTr.position + randomPos);
             });
-
+        
         objTr.DORotate(new Vector3(180, Random.Range(-25, 25), 0), 0.7f, RotateMode.FastBeyond360);
     }
 

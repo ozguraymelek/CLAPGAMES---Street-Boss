@@ -72873,7 +72873,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214440304}
-  m_LocalRotation: {x: 0.11373687, y: -0.000000017620835, z: 0.0000000020172284, w: 0.99351096}
+  m_LocalRotation: {x: 0.11373687, y: 0.000000017620845, z: -0.0000000020172295, w: 0.99351096}
   m_LocalPosition: {x: 0.000030517574, y: 4.0300303, z: -198.25996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -88753,11 +88753,12 @@ MonoBehaviour:
   indexChipDesk: 0
   indexDonutDesk: 0
   indexPopcornDesk: 0
-  moneyThrowDuration: 0.1
+  moneyThrowDuration: 0.5
   posDistRunner: 1.5
   postDistIdle: 0.4
   lerpSpeedForRunner: 10
   lerpSpeedForIdle: 25
+  moneyActivatorIndex: 0
   delayedVaweT1: 0.05
   delayedVaweT2: 0.15
   delayedVaweT3: 0.15
@@ -122527,7 +122528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090292031}
   m_LocalRotation: {x: -0.6424977, y: 0.2952909, z: 0.2952909, w: 0.6424977}
-  m_LocalPosition: {x: -7.18, y: 0, z: 15.83}
+  m_LocalPosition: {x: -6.54, y: 0, z: 15.08}
   m_LocalScale: {x: 1, y: 0.6089, z: 0.8066}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -125837,7 +125838,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.8e-44, y: 1.3e-44, z: 0, w: 4.271e-42}
+  m_BoundingSphereOverride: {x: 7.12e-43, y: 4.1297073, z: 7.12e-43, w: 4.129719}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -132401,7 +132402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4049125502478445529}
   m_LocalRotation: {x: -0, y: 0.5522956, z: -0, w: 0.8336484}
-  m_LocalPosition: {x: -6.3742294, y: 0, z: 16.236092}
+  m_LocalPosition: {x: -5.94, y: 0, z: 15.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

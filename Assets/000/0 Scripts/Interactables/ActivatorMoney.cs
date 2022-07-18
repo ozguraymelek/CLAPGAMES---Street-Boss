@@ -17,8 +17,7 @@ public class ActivatorMoney : MonoBehaviour, IActivatorMoney
     void IActivatorMoney.OnExit()
     {
         i = 0;
-        // FindObjectOfType<Prince>().GetComponent<CapsuleCollider>().isTrigger = false;
-        // FindObjectOfType<Prince>().GetComponent<CapsuleCollider>().isTrigger = false;
+        //FindObjectOfType<Prince>().GetComponent<CapsuleCollider>().isTrigger = false;
     }
 
     void IActivatorMoney.OnStay(Prince prince)
