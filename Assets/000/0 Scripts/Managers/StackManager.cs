@@ -314,8 +314,10 @@ public class StackManager : Singleton<StackManager>
         if (prince.transform.GetChild(1).gameObject.activeInHierarchy)
         {
             int damagedIndex = foods.IndexOf(_food);
-
-
+            
+            if(damagedIndex==0) return;
+            
+            
             int foodIndex = foods.Count;
 
             for (int i = damagedIndex; i < foodIndex; i++)
