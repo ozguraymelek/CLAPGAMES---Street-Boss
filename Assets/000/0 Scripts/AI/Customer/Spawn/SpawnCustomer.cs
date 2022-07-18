@@ -12,12 +12,20 @@ public class SpawnCustomer : MonoBehaviour
     
     private void Update()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= spawnRate)
+        if (StackManager.Instance.objectsOnDesk.Count != 0)
         {
-            Customer cust = Instantiate(customer, transform.position, Quaternion.identity);
+            timer += Time.deltaTime;
+        
+            if (timer >= spawnRate)
+            {
+                Customer cust = Instantiate(customer, transform.position, Quaternion.identity);
+                timer = 0;
+            }
+        }
+        else
+        {
             timer = 0;
         }
+        
     }
 }
