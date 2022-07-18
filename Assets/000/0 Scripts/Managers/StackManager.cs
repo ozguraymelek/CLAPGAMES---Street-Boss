@@ -641,7 +641,7 @@ public class StackManager : Singleton<StackManager>
         var randomY = Random.Range(-diss, diss);
         var randomPos = new Vector3(randomX, 0, randomY);
 
-        objTr.DOJump(targetTr.position + randomPos, 6.0f, 1, moneyThrowDuration).OnComplete(
+        objTr.DOJump(targetTr.position + randomPos, 2.0f, 1, moneyThrowDuration).OnComplete(
             () =>
             {
                 playerSettings.takedDeck--;

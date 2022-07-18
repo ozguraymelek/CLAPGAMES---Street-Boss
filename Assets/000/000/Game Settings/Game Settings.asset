@@ -15,11 +15,11 @@ MonoBehaviour:
   speed: 400
   rotationSpeed: 9
   cameraTrasitionTime: 1.5
-  hamburgerBuildingIndex: 0
-  hotdogbuildingIndex: 0
-  iceCreambuildingIndex: 0
-  chipsbuildingIndex: 0
-  donutbuildingIndex: 0
+  hamburgerBuildingIndex: 3
+  hotdogbuildingIndex: 3
+  iceCreambuildingIndex: 3
+  chipsbuildingIndex: 2
+  donutbuildingIndex: 1
   popcornbuildingIndex: 0
   hamburgerPrizeLVL0: 6
   hamburgerPrizeLVL1: 8

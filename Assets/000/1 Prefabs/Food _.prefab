@@ -701,7 +701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1389449692195864378
 Transform:
   m_ObjectHideFlags: 0
@@ -781,7 +781,7 @@ GameObject:
   - component: {fileID: 2120453123809111928}
   m_Layer: 0
   m_Name: Food _
-  m_TagString: Hamburger
+  m_TagString: HotDog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -844,7 +844,7 @@ MonoBehaviour:
   - {fileID: 6456491072961327334}
   - {fileID: 1182241788201901859}
   boxCollider: {fileID: 0}
-  activeFood: {fileID: 1730369131714995584}
+  activeFood: {fileID: 3257745629581424971}
   isOnList: 0
 --- !u!65 &2120453123809111930
 BoxCollider:
@@ -936,8 +936,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5469627525285118935, guid: 430670191d16a7e47918475efb4ec1bf, type: 3}
-  - {fileID: -6287183799622739493, guid: 430670191d16a7e47918475efb4ec1bf, type: 3}
+  - {fileID: 2100000, guid: e14659ffb897995489ca563472ffe6a8, type: 2}
+  - {fileID: 2100000, guid: 06bb8fab30faf56449fd23c4c05180db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1010,7 +1010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2773661908001645553
 Transform:
   m_ObjectHideFlags: 0
@@ -1172,8 +1172,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5469627525285118935, guid: 430670191d16a7e47918475efb4ec1bf, type: 3}
-  - {fileID: -6287183799622739493, guid: 430670191d16a7e47918475efb4ec1bf, type: 3}
+  - {fileID: 2100000, guid: e14659ffb897995489ca563472ffe6a8, type: 2}
+  - {fileID: 2100000, guid: 06bb8fab30faf56449fd23c4c05180db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1866,7 +1866,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7520353001372547406}
-  m_Mesh: {fileID: 3873296472634090296, guid: 3545c27f59731b64d90f8ff58cb47bd4, type: 3}
+  m_Mesh: {fileID: 3873296472634090296, guid: 183867f276281d345bf9371b89774240, type: 3}
 --- !u!23 &5281302807186878859
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1887,8 +1887,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5469627525285118935, guid: 430670191d16a7e47918475efb4ec1bf, type: 3}
-  - {fileID: -6287183799622739493, guid: 430670191d16a7e47918475efb4ec1bf, type: 3}
+  - {fileID: 2100000, guid: e14659ffb897995489ca563472ffe6a8, type: 2}
+  - {fileID: 2100000, guid: 06bb8fab30faf56449fd23c4c05180db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

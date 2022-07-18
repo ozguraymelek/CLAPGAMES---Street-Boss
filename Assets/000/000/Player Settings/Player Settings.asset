@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eaae3ba54958fa4a96fb75099ad9016, type: 3}
   m_Name: Player Settings
   m_EditorClassIdentifier: 
-  playerMoney: 0
-  takedDeck: 0
+  playerMoney: 120
+  takedDeck: 60
