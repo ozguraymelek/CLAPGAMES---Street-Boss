@@ -8,13 +8,16 @@ public abstract class Obstacle : MonoBehaviour
     [Space]
     public CkyBehaviour behaviour;
 
-    private void Start()
+    public Reklam ReklamScript;
+
+    public void Start()
     {
-        //behaviour.ObstacleMovementKnife(this);
+        ReklamScript = GameObject.FindObjectOfType<Reklam>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
+
         if(other.GetComponent<Prince>() != null) return;
         
         IStackable _interactable = other.GetComponent<IStackable>();
@@ -24,6 +27,9 @@ public abstract class Obstacle : MonoBehaviour
         _interactable.Scatter();
 
         FindObjectOfType<CkyEvents>().OnInteractWithObstcleObject();
+
+        ReklamScript = GameObject.FindObjectOfType<Reklam>();
+        ReklamScript.showInterstitialAd();
 
         Destroy(gameObject);
     }

@@ -15,9 +15,11 @@ public class ActivatorDesk : Singleton<ActivatorDesk>, IActivatorDesk
     public List<Transform> donutFoodStackPoints;
     public List<Transform> popcornFoodStackPoints;
 
+    public Reklam script;
+
     void IActivatorDesk.OnEnter()
     {
-        
+        script.showInterstitialAd();
     }
 
     void IActivatorDesk.OnExit()

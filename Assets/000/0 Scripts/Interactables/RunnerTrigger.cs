@@ -8,6 +8,8 @@ public class RunnerTrigger : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameSettings gameSettings;
 
+    public Reklam script;
+
     private void Start()
     {
         // CkyEvents.OnTransToIdle += DeactivateGameInfoPanel;
@@ -20,6 +22,7 @@ public class RunnerTrigger : MonoBehaviour, IInteractable
         StackManager.Instance.SetScaleIdleToRunner();
         LevelManager.Instance.ActivateStartLevel(gameSettings);
         LevelManager.Instance.RandomLevel();
+        script.showInterstitialAd();
     }
 
     void IInteractable.OnExit()
