@@ -29872,6 +29872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c728b531703b6a4ea15787389e01543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
 --- !u!1 &476251745
 GameObject:
   m_ObjectHideFlags: 0
@@ -72899,7 +72900,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214440304}
-  m_LocalRotation: {x: 0.11373687, y: -0.000000017620835, z: 0.0000000020172284, w: 0.99351096}
+  m_LocalRotation: {x: 0.11373687, y: 0.000000017620845, z: -0.0000000020172295, w: 0.99351096}
   m_LocalPosition: {x: 0.000030517574, y: 4.0300303, z: -198.25996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -85792,7 +85793,7 @@ MonoBehaviour:
   restartButton: {fileID: 1286115506}
   gameSettings: {fileID: 11400000, guid: 3bb6aecdf1097b549893cdb09c81c673, type: 2}
   levels: []
-  timeScale: 1
+  timeScale: 3
   hamburgerBuildingActivator: {fileID: 593687693}
   hotdogBuildingActivator: {fileID: 1585593833}
   iceCreamBuildingActivator: {fileID: 225338790}
@@ -105833,7 +105834,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808161263}
-  m_LocalRotation: {x: 0.11373687, y: 0.000000017620835, z: -0.0000000020172284, w: 0.99351096}
+  m_LocalRotation: {x: 0.11373687, y: -0.000000017620845, z: 0.0000000020172295, w: 0.99351096}
   m_LocalPosition: {x: 0.000030517574, y: 4.0300303, z: -198.25996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using TapticPlugin;
+using System;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -108,6 +109,14 @@ public class GameManager : Singleton<GameManager>
     {
         CkyEvents.OnSuccess += OnSuccess;
         CkyEvents.OnFail += OnFail;
+        CkyEvents.OnTransToIdle += TransitionToIdle;
+    }
+
+    private void TransitionToIdle()
+    {
+        levelIndex++;
+        Globals.levelIndex = levelIndex;
+        PlayerPrefs.SetInt("level", levelIndex);
     }
 
     private void SetLevel()
@@ -175,10 +184,18 @@ public class GameManager : Singleton<GameManager>
 
     private void SaveLoadOperations()
     {
-        //if (levelIndex != 0)
-        //    GameSaveManager.Instance.LoadGame();
-        //if (levelIndex == 0)
-        //    SaveGame();
+        if (levelIndex != 0)
+            GameSaveManager.Instance.LoadGame();
+        if (levelIndex == 0)
+        {
+            gameSettings.hamburgerBuildingIndex = 0;
+            gameSettings.hotdogbuildingIndex = 0;
+            gameSettings.iceCreambuildingIndex = 0;
+            gameSettings.chipsbuildingIndex = 0;
+            gameSettings.donutbuildingIndex = 0;
+            gameSettings.popcornbuildingIndex = 0;
+            SaveGame();
+        }
 
         GameSaveManager.Instance.LoadGame();
     }
